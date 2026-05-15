@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-
-const CHUD_PHOTO_URL = 'https://i.ibb.co/mCK7vXNw/IMG-4070.jpg'
+import { CHUD_PHOTO_URL } from '../constants'
 
 export default function Home() {
   return (

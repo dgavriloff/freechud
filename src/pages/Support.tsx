@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom'
-
-const GIVESENDGO_URL = 'https://www.givesendgo.com/HelpChud'
-const PUMPFUN_URL = 'https://join.pump.fun/HSag/fiqjlk67'
+import { GIVESENDGO_URL, PUMPFUN_URL } from '../constants'
 
 export default function Support() {
   return (

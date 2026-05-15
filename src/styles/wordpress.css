@@ -9,8 +9,8 @@
   --wp-link-hover: #00669b;
   --wp-accent: #1a1a1a;
   --wp-content-width: 720px;
-  --wp-serif: Georgia, 'Times New Roman', Times, serif;
-  --wp-sans: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+  --wp-serif: 'Oswald', 'Helvetica Neue', Helvetica, sans-serif;
+  --wp-sans: 'Oswald', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 *,
@@ -110,57 +110,70 @@ img {
   min-height: 100dvh;
 }
 
-.site-header {
-  text-align: center;
-  padding: 3.5rem 1.5rem 2.5rem;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
   border-bottom: 1px solid var(--wp-border);
+  background: var(--wp-bg);
 }
 
-.site-title {
-  font-family: var(--wp-serif);
-  font-size: 2.75rem;
-  font-weight: 700;
-  margin: 0;
-  letter-spacing: -0.02em;
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: var(--wp-accent);
+  border-bottom: none;
+  text-decoration: none;
 }
 
-.site-title a {
+.navbar-brand:hover {
   color: var(--wp-accent);
   border-bottom: none;
 }
 
-.site-description {
-  margin: 0.5rem 0 0;
-  color: var(--wp-muted);
-  font-style: italic;
-  font-size: 1rem;
+.navbar-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--wp-border);
+  display: block;
 }
 
-.site-nav {
-  margin-top: 1.5rem;
+.navbar-name {
   font-family: var(--wp-sans);
-  font-size: 0.875rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 
-.site-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.navbar-nav {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.75rem;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--wp-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
-.site-nav a {
-  color: var(--wp-text);
+.navbar-nav a {
+  color: var(--wp-accent);
   border-bottom: none;
 }
 
-.site-nav a:hover {
+.navbar-nav a:hover {
   color: var(--wp-link);
+}
+
+.navbar-nav a.active {
+  border-bottom: 2px solid var(--wp-accent);
 }
 
 .site-content {
@@ -338,11 +351,20 @@ img {
 }
 
 @media (max-width: 600px) {
-  .site-header {
-    padding: 1.5rem 1rem 1.25rem;
+  .navbar {
+    padding: 0.5rem 1rem;
+    gap: 0.625rem;
   }
-  .site-title {
-    font-size: 1.625rem;
+  .navbar-logo {
+    width: 34px;
+    height: 34px;
+  }
+  .navbar-name {
+    font-size: 1.0625rem;
+  }
+  .navbar-nav {
+    gap: 1rem;
+    font-size: 0.875rem;
   }
   .site-content {
     padding: 1.5rem 1rem;
@@ -365,9 +387,6 @@ img {
     height: 100dvh;
     min-height: 0;
     overflow: hidden;
-  }
-  .site--home .site-header {
-    padding: 1.25rem 1rem 1rem;
   }
   .site--home .site-content {
     padding: 1rem;
@@ -394,7 +413,7 @@ img {
     align-items: center;
   }
   .site--home .hero-photo img {
-    max-height: calc(100dvh - 320px);
+    max-height: calc(100dvh - 280px);
     width: auto;
     max-width: 100%;
     object-fit: contain;

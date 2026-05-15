@@ -1,4 +1,5 @@
-import { Outlet, Link, useLocation } from 'react-router-dom'
+import { Outlet, Link, NavLink, useLocation } from 'react-router-dom'
+import { CHUD_PHOTO_URL } from '../constants'
 
 export default function Layout() {
   const { pathname } = useLocation()
@@ -6,10 +7,15 @@ export default function Layout() {
 
   return (
     <div className={`site${isHome ? ' site--home' : ''}`}>
-      <header className="site-header">
-        <h1 className="site-title">
-          <Link to="/">Free Chud the Builder</Link>
-        </h1>
+      <header className="navbar">
+        <Link to="/" className="navbar-brand">
+          <img src={CHUD_PHOTO_URL} alt="" className="navbar-logo" />
+          <span className="navbar-name">FREE CHUD</span>
+        </Link>
+        <nav className="navbar-nav" aria-label="Primary">
+          <NavLink to="/story">Story</NavLink>
+          <NavLink to="/support">Support</NavLink>
+        </nav>
       </header>
 
       <main className="site-content">
