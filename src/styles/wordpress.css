@@ -658,6 +658,18 @@ img {
   overflow: hidden;
 }
 
+.carousel-card-media.is-toggle {
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  font: inherit;
+  color: inherit;
+}
+
+.carousel-card-media.is-toggle video {
+  pointer-events: none;
+}
+
 .carousel-card-media iframe,
 .carousel-card-media video {
   position: absolute;
@@ -695,18 +707,20 @@ img {
 .carousel-nav {
   width: 36px;
   height: 36px;
+  padding: 0;
   border-radius: 50%;
   border: 1px solid var(--wp-border);
   background: var(--wp-bg);
   color: var(--wp-accent);
-  font-family: var(--wp-sans);
-  font-size: 1.5rem;
-  line-height: 1;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.carousel-nav svg {
+  display: block;
 }
 
 .carousel-nav:disabled {

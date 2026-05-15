@@ -4,6 +4,7 @@ import { clips, type Clip } from '../data/clips'
 
 export default function Clips() {
   const carouselRef = useRef<HTMLDivElement>(null)
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([])
   const [activeIndex, setActiveIndex] = useState(0)
 
   const scrollToIndex = (index: number) => {
@@ -14,6 +15,14 @@ export default function Clips() {
     if (!card) return
     el.scrollTo({ left: card.offsetLeft, behavior: 'smooth' })
   }
+
+  useEffect(() => {
+    videoRefs.current.forEach((v, i) => {
+      if (v && i !== activeIndex && !v.paused) {
+        v.pause()
+      }
+    })
+  }, [activeIndex])
 
   useEffect(() => {
     const el = carouselRef.current
@@ -64,8 +73,14 @@ export default function Clips() {
         <>
           <div className="carousel-wrapper">
             <div className="carousel" ref={carouselRef}>
-              {clips.map((clip) => (
-                <ClipCard key={clip.id} clip={clip} />
+              {clips.map((clip, i) => (
+                <ClipCard
+                  key={clip.id}
+                  clip={clip}
+                  videoRef={(el) => {
+                    videoRefs.current[i] = el
+                  }}
+                />
               ))}
             </div>
           </div>
@@ -78,7 +93,16 @@ export default function Clips() {
                 onClick={() => scrollToIndex(activeIndex - 1)}
                 disabled={activeIndex === 0}
               >
-                &lsaquo;
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path
+                    d="M15 5 L8 12 L15 19"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </button>
               <div className="carousel-indicators">
                 {clips.map((clip, i) => (
@@ -98,7 +122,16 @@ export default function Clips() {
                 onClick={() => scrollToIndex(activeIndex + 1)}
                 disabled={activeIndex === clips.length - 1}
               >
-                &rsaquo;
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path
+                    d="M9 5 L16 12 L9 19"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </button>
             </div>
           )}
@@ -108,25 +141,70 @@ export default function Clips() {
   )
 }
 
-function ClipCard({ clip }: { clip: Clip }) {
+function ClipCard({
+  clip,
+  videoRef,
+}: {
+  clip: Clip
+  videoRef: (el: HTMLVideoElement | null) => void
+}) {
+  const localRef = useRef<HTMLVideoElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+
   const embedSrc = clip.youtubeId
     ? `https://www.youtube.com/embed/${clip.youtubeId}`
     : clip.iframeUrl
 
+  const toggle = () => {
+    const v = localRef.current
+    if (!v) return
+    if (v.paused) {
+      void v.play()
+    } else {
+      v.pause()
+    }
+  }
+
   return (
     <div className="carousel-card">
-      <div className="carousel-card-media">
-        {clip.src ? (
-          <video src={clip.src} poster={clip.poster} controls preload="metadata" />
-        ) : embedSrc ? (
+      {clip.src ? (
+        <button
+          type="button"
+          className="carousel-card-media is-toggle"
+          onClick={toggle}
+          aria-label={isPlaying ? 'Pause video' : 'Play video'}
+        >
+          <video
+            ref={(el) => {
+              localRef.current = el
+              videoRef(el)
+            }}
+            src={clip.src}
+            poster={clip.poster}
+            loop
+            playsInline
+            preload="metadata"
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+          />
+          {!isPlaying && (
+            <span className="hero-video-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="56" height="56">
+                <path d="M7 5 L19 12 L7 19 Z" fill="currentColor" />
+              </svg>
+            </span>
+          )}
+        </button>
+      ) : embedSrc ? (
+        <div className="carousel-card-media">
           <iframe
             src={embedSrc}
             title={clip.title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
-        ) : null}
-      </div>
+        </div>
+      ) : null}
       <h3 className="carousel-card-title">{clip.title}</h3>
       {clip.description && <p className="carousel-card-desc">{clip.description}</p>}
     </div>
