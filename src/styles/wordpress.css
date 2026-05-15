@@ -237,7 +237,7 @@ img {
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  flex: 0 1 360px;
+  flex: 0 1 460px;
   min-width: 0;
   gap: 1.5rem;
 }
@@ -246,19 +246,19 @@ img {
   border: 1px solid var(--wp-border);
   border-radius: 2px;
   background: var(--wp-bg);
-  padding: 1.25rem 1.25rem 1rem;
+  padding: 1.75rem 1.75rem 1.5rem;
   text-align: left;
 }
 
 .hero-summary-title {
-  margin: 0 0 0.75rem;
-  font-size: 1.25rem;
+  margin: 0 0 1rem;
+  font-size: 2rem;
   letter-spacing: 0.01em;
 }
 
 .hero-summary p {
-  margin: 0 0 0.75rem;
-  font-size: 0.95rem;
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
   line-height: 1.55;
 }
 
