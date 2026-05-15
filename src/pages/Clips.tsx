@@ -62,8 +62,12 @@ export default function Clips() {
       <section className="story-intro">
         <h2 className="page-title">Isn't he a racist?</h2>
         <p>
-          Short answer: no. People have called him every name in the book, most of them on
-          camera, while he stayed calm. Watch the clips and judge for yourself.
+          No. People have called Dalton every name in the book, most of it on his own
+          livestream, while he stayed calm. He has been screamed at, threatened, and
+          assaulted on camera. He has not returned a single insult.
+        </p>
+        <p>
+          Watch the clips and decide for yourself.
         </p>
       </section>
 

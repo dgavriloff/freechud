@@ -7,9 +7,17 @@ export default function Support() {
       <p className="page-back">
         <Link to="/">&larr; Back</Link>
       </p>
-      <h2 className="page-title">How to Support Chud</h2>
+      <h2 className="page-title">HOW TO HELP</h2>
       <div className="page-content">
-        <p>Two ways to help bring Chud home:</p>
+        <p>
+          The bond is $1.25 million. The lead charge carries 15 to 60 years. Dalton
+          needs an attorney who can fight, and his family needs to keep the lights on
+          while they fight for him.
+        </p>
+        <p>
+          Every dollar goes to his legal defense and his family's living expenses.
+          Please join us in bringing him home.
+        </p>
         <div className="hero-actions">
           <a
             className="btn btn-primary"
@@ -28,6 +36,9 @@ export default function Support() {
             Buy $CHUD on pump.fun
           </a>
         </div>
+        <p className="muted-note">
+          We are just regular people working every day to help Dalton.
+        </p>
       </div>
     </article>
   )

@@ -45,13 +45,18 @@ export default function Home() {
         <article className="hero-summary">
           <h2 className="hero-summary-title">About Chud</h2>
           <p>
-            Dalton, known online as Chud, has a rare combination: the courage to speak
-            up when people are breaking rules or behaving badly in public, and the calm
-            to stay composed while they get loud, hostile, or violent.
+            Dalton Gavriloff, known online as Chud, is a livestreamer with no prior
+            convictions. He films himself in public and calmly calls out people who
+            break rules or behave badly. He has been assaulted on camera more than once.
+            He keeps streaming. He keeps his voice level.
           </p>
           <p>
-            He is, in plain terms, an American hero &mdash; and the state is now trying
-            to bury him for it.
+            On May 13, 2026, a man walked up to him outside a Tennessee courthouse and
+            attacked him. Dalton drew his licensed firearm to defend himself. The state
+            has charged him with attempted homicide and set his bond at $1.25 million.
+          </p>
+          <p>
+            We are just regular people trying to bring him home.
           </p>
         </article>
 
@@ -63,7 +68,7 @@ export default function Home() {
             How can I support Chud
           </Link>
           <Link className="btn btn-secondary" to="/clips">
-            Isn't he a racist?
+            Watch the clips
           </Link>
         </div>
       </aside>
