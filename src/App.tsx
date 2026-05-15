@@ -45,13 +45,13 @@ export default function App() {
 
       <footer className="site-footer">
         <p>
-          Contribute to the website by making a pull request{' '}
+          Contribute to this website on{' '}
           <a
             href="https://github.com/dgavriloff/freechud"
             target="_blank"
             rel="noopener noreferrer"
           >
-            here
+            GitHub
           </a>
           .
         </p>
