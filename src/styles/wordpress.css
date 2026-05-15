@@ -231,23 +231,58 @@ img {
   border-bottom: 2px solid var(--wp-accent);
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
-  background: #000;
-  color: #fff;
-  border-color: #000;
-}
-
 .btn-secondary {
   background: transparent;
   color: var(--wp-accent);
   border-bottom: 2px solid var(--wp-accent);
 }
 
-.btn-secondary:hover,
-.btn-secondary:focus {
+@media (hover: hover) {
+  .btn-primary:hover {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+  }
+
+  .btn-secondary:hover {
+    background: var(--wp-accent);
+    color: #fff;
+  }
+}
+
+.btn-primary:focus-visible {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+  outline: 2px solid var(--wp-link);
+  outline-offset: 2px;
+}
+
+.btn-secondary:focus-visible {
   background: var(--wp-accent);
   color: #fff;
+  outline: 2px solid var(--wp-link);
+  outline-offset: 2px;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary:active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.btn-secondary:active {
+  background: var(--wp-accent);
+  color: #fff;
+}
+
+/* Remove iOS tap highlight */
+.btn {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Footer */
