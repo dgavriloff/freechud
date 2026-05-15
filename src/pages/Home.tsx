@@ -3,7 +3,7 @@ import { useRef, useState } from 'react'
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const toggle = () => {
     const v = videoRef.current
@@ -26,26 +26,19 @@ export default function Home() {
         <video
           ref={videoRef}
           src="/clips/message.mp4"
-          autoPlay
           loop
-          muted
           playsInline
-          preload="auto"
+          preload="metadata"
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
         />
-        <span className="hero-video-icon" aria-hidden="true">
-          {isPlaying ? (
-            <svg viewBox="0 0 24 24" width="36" height="36">
-              <rect x="6" y="5" width="4" height="14" fill="currentColor" />
-              <rect x="14" y="5" width="4" height="14" fill="currentColor" />
-            </svg>
-          ) : (
-            <svg viewBox="0 0 24 24" width="36" height="36">
+        {!isPlaying && (
+          <span className="hero-video-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="56" height="56">
               <path d="M7 5 L19 12 L7 19 Z" fill="currentColor" />
             </svg>
-          )}
-        </span>
+          </span>
+        )}
       </button>
 
       <aside className="hero-aside">
