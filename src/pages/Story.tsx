@@ -24,8 +24,13 @@ export default function Story() {
       root.style.setProperty('--line-height', `${lineHeight}px`)
 
       const doc = document.documentElement
-      const maxScroll = doc.scrollHeight - window.innerHeight
-      const ratio = maxScroll > 0 ? Math.max(0, Math.min(1, window.scrollY / maxScroll)) : 0
+      const halfVh = window.innerHeight / 2
+      const firstCenterAbs = firstRect.top + firstRect.height / 2 + window.scrollY
+      const startScroll = firstCenterAbs - halfVh
+      const endScroll = doc.scrollHeight - window.innerHeight
+      const span = endScroll - startScroll
+      const ratio =
+        span > 0 ? Math.max(0, Math.min(1, (window.scrollY - startScroll) / span)) : 0
       root.style.setProperty('--line-progress', `${lineHeight * ratio}px`)
     }
     const schedule = () => {
