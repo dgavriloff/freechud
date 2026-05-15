@@ -45,7 +45,15 @@ export default function App() {
 
       <footer className="site-footer">
         <p>
-          &copy; {new Date().getFullYear()} Free Chud the Builder
+          Contribute to the website by making a pull request{' '}
+          <a
+            href="https://github.com/dgavriloff/freechud"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            here
+          </a>
+          .
         </p>
       </footer>
     </div>
