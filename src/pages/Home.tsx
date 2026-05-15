@@ -45,7 +45,7 @@ export default function Home() {
         <article className="hero-summary">
           <h2 className="hero-summary-title">About Chud</h2>
           <p>
-            Dalton Gavriloff, known online as Chud, is a livestreamer with no prior
+            Dalton Eatherly, known online as Chud, is a livestreamer with no prior
             convictions. He films himself in public and calmly calls out people who
             break rules or behave badly. He has been assaulted on camera more than once.
             He keeps streaming. He keeps his voice level.
