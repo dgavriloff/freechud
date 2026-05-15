@@ -13,21 +13,19 @@ export type Clip = {
 }
 
 export const clips: Clip[] = [
-  // Add clips here. Each clip needs one of: youtubeId, iframeUrl, or src.
-  //
-  // Local file example (drop the file in public/clips/):
-  // {
-  //   id: 'restaurant',
-  //   title: "Bob's Steak & Chop House",
-  //   description: 'Dalton remains composed while staff escalate.',
-  //   src: '/clips/restaurant.mp4',
-  //   poster: '/clips/restaurant.jpg',
-  // },
-  //
-  // YouTube example:
-  // {
-  //   id: 'courthouse',
-  //   title: 'Outside the courthouse',
-  //   youtubeId: 'dQw4w9WgXcQ',
-  // },
+  {
+    id: 'crosswalk',
+    title: 'Crosswalk',
+    src: '/clips/crosswalk.mp4',
+  },
+  {
+    id: 'hoodie',
+    title: 'Hoodie',
+    src: '/clips/hoodie.mp4',
+  },
+  {
+    id: 'message',
+    title: 'Message',
+    src: '/clips/message.mp4',
+  },
 ]
