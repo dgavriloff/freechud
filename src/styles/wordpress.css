@@ -250,11 +250,35 @@ img {
 
 .page-title {
   margin: 0 0 1.5rem;
-  font-size: 2rem;
+  font-size: 2.25rem;
+  letter-spacing: 0.01em;
 }
 
 .page-content > :first-child {
   margin-top: 0;
+}
+
+.story-intro {
+  margin: 0 0 3.5rem;
+  max-width: 60ch;
+}
+
+.story-intro p {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  margin: 0 0 1.25rem;
+}
+
+.story-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.story-events {
+  margin-top: 3.5rem;
+}
+
+.story-events .page-title {
+  margin-bottom: 2rem;
 }
 
 /* Buttons */
@@ -461,7 +485,7 @@ img {
 
 .timeline-event {
   position: relative;
-  margin-bottom: 2.75rem;
+  margin-bottom: 3.5rem;
 }
 
 .timeline-event:last-child {
@@ -496,8 +520,8 @@ img {
 }
 
 .timeline-bullets li {
-  margin-bottom: 0.4rem;
-  line-height: 1.6;
+  margin-bottom: 0.6rem;
+  line-height: 1.7;
 }
 
 .timeline-bullets li:last-child {
