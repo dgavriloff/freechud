@@ -68,7 +68,7 @@ export default function Home() {
             How can I support Chud
           </Link>
           <Link className="btn btn-secondary" to="/clips">
-            Watch the clips
+            Isn't he a racist?
           </Link>
         </div>
       </aside>
