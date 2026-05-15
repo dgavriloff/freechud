@@ -23,11 +23,10 @@ export default function Story() {
       root.style.setProperty('--line-top', `${top}px`)
       root.style.setProperty('--line-height', `${lineHeight}px`)
 
-      const firstCenterVp = firstRect.top + firstRect.height / 2
-      const lastCenterVp = lastRect.top + lastRect.height / 2
-      const trigger = window.innerHeight * 0.5
-      const filled = Math.max(0, Math.min(lastCenterVp - firstCenterVp, trigger - firstCenterVp))
-      root.style.setProperty('--line-progress', `${filled}px`)
+      const doc = document.documentElement
+      const maxScroll = doc.scrollHeight - window.innerHeight
+      const ratio = maxScroll > 0 ? Math.max(0, Math.min(1, window.scrollY / maxScroll)) : 0
+      root.style.setProperty('--line-progress', `${lineHeight * ratio}px`)
     }
     const schedule = () => {
       if (raf) return
@@ -53,9 +52,26 @@ export default function Story() {
       <p className="page-back">
         <Link to="/">&larr; Back</Link>
       </p>
-      <h2 className="page-title">What happened</h2>
 
-      <div className="timeline" ref={ref}>
+      <section className="story-intro">
+        <h2 className="page-title">About Chud</h2>
+        <p>
+          Chud (legal name Christopher Eatherly) is an independent livestreamer. He built his
+          audience by going live with whatever he's doing &mdash; eating, driving, showing up to
+          court &mdash; and saying what's on his mind.
+        </p>
+        <p>
+          Like millions of working-class Americans, he's been chased by debt collectors. Like a
+          much smaller number, he livestreamed his run-ins with the police and the courts. In May
+          2026, a single week of those run-ins ended with him on a hospital gurney, in handcuffs,
+          facing 15 to 60 years in prison.
+        </p>
+      </section>
+
+      <section className="story-events">
+        <h2 className="page-title">What happened</h2>
+
+        <div className="timeline" ref={ref}>
         <section className="timeline-event">
           <h3 className="timeline-date">Saturday, May 9, Nashville</h3>
           <ul className="timeline-bullets">
@@ -147,7 +163,8 @@ export default function Story() {
             </li>
           </ul>
         </section>
-      </div>
+        </div>
+      </section>
     </article>
   )
 }
