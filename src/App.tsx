@@ -19,7 +19,6 @@ export default function App() {
               alt="Chud the Builder"
               loading="eager"
             />
-            <figcaption>Chud the Builder</figcaption>
           </figure>
 
           <div className="hero-actions">
