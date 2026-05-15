@@ -107,6 +107,7 @@ img {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .site-header {
@@ -200,9 +201,11 @@ img {
 
 .hero-actions {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.875rem;
   align-items: center;
+  justify-content: center;
   margin-top: 2rem;
 }
 
@@ -215,13 +218,12 @@ img {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: 0.875rem 1.75rem;
+  padding: 0.875rem 1.5rem;
   border: 2px solid var(--wp-accent);
   border-radius: 2px;
   text-decoration: none;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
-  min-width: 280px;
   text-align: center;
 }
 
@@ -300,15 +302,67 @@ img {
 }
 
 @media (max-width: 600px) {
+  .site {
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
   .site-header {
-    padding: 2.5rem 1.25rem 2rem;
+    padding: 1.25rem 1rem 1rem;
   }
   .site-title {
-    font-size: 2rem;
+    font-size: 1.625rem;
   }
   .site-content {
-    padding: 2rem 1.25rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0;
   }
-  h1 { font-size: 1.875rem; }
-  h2 { font-size: 1.5rem; }
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    flex: 1;
+  }
+  .hero-photo {
+    margin: 0 0 1rem;
+    max-width: 100%;
+    min-height: 0;
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-photo img {
+    max-height: calc(100dvh - 280px);
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  .hero-photo figcaption {
+    margin-top: 0.5rem;
+  }
+  .hero-actions {
+    margin-top: 1rem;
+    gap: 0.625rem;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+  .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8125rem;
+    letter-spacing: 0.05em;
+  }
+  .site-footer {
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+  }
+  h1 { font-size: 1.625rem; }
+  h2 { font-size: 1.375rem; }
 }
