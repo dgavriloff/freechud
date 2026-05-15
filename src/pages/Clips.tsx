@@ -59,21 +59,23 @@ export default function Clips() {
 }
 
 function ClipCard({ clip }: { clip: Clip }) {
-  const src = clip.youtubeId
+  const embedSrc = clip.youtubeId
     ? `https://www.youtube.com/embed/${clip.youtubeId}`
     : clip.iframeUrl
 
   return (
     <div className="carousel-card">
       <div className="carousel-card-media">
-        {src && (
+        {clip.src ? (
+          <video src={clip.src} poster={clip.poster} controls preload="metadata" />
+        ) : embedSrc ? (
           <iframe
-            src={src}
+            src={embedSrc}
             title={clip.title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
-        )}
+        ) : null}
       </div>
       <h3 className="carousel-card-title">{clip.title}</h3>
       {clip.description && <p className="carousel-card-desc">{clip.description}</p>}
