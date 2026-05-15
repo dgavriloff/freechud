@@ -19,6 +19,9 @@ export default function Home() {
         <Link className="btn btn-secondary" to="/support">
           How can I support Chud
         </Link>
+        <Link className="btn btn-secondary" to="/clips">
+          Isn't he a racist?
+        </Link>
       </div>
     </section>
   )
