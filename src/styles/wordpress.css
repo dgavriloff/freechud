@@ -466,11 +466,14 @@ img {
     gap: 1.25rem;
   }
   .hero-video {
-    max-width: 240px;
+    max-width: min(420px, 80vw);
   }
   .hero-aside {
     width: 100%;
     flex: 1 1 auto;
+  }
+  .hero-summary {
+    display: none;
   }
   .hero-actions {
     gap: 0.625rem;
