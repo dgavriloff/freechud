@@ -12,6 +12,15 @@ export default function Home() {
         />
       </figure>
 
+      <figure className="hero-video">
+        <video
+          src="/clips/message.mp4"
+          controls
+          playsInline
+          preload="metadata"
+        />
+      </figure>
+
       <div className="hero-actions">
         <Link className="btn btn-primary" to="/story">
           Read his story

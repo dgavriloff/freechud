@@ -63,41 +63,43 @@ export default function Clips() {
       ) : (
         <>
           <div className="carousel-wrapper">
-            <button
-              type="button"
-              className="carousel-nav carousel-nav--prev"
-              aria-label="Previous clip"
-              onClick={() => scrollToIndex(activeIndex - 1)}
-              disabled={activeIndex === 0}
-            >
-              &lsaquo;
-            </button>
             <div className="carousel" ref={carouselRef}>
               {clips.map((clip) => (
                 <ClipCard key={clip.id} clip={clip} />
               ))}
             </div>
-            <button
-              type="button"
-              className="carousel-nav carousel-nav--next"
-              aria-label="Next clip"
-              onClick={() => scrollToIndex(activeIndex + 1)}
-              disabled={activeIndex === clips.length - 1}
-            >
-              &rsaquo;
-            </button>
           </div>
           {clips.length > 1 && (
-            <div className="carousel-indicators">
-              {clips.map((clip, i) => (
-                <button
-                  key={clip.id}
-                  type="button"
-                  className={`carousel-dot${i === activeIndex ? ' is-active' : ''}`}
-                  aria-label={`Go to clip ${i + 1}`}
-                  onClick={() => scrollToIndex(i)}
-                />
-              ))}
+            <div className="carousel-controls">
+              <button
+                type="button"
+                className="carousel-nav"
+                aria-label="Previous clip"
+                onClick={() => scrollToIndex(activeIndex - 1)}
+                disabled={activeIndex === 0}
+              >
+                &lsaquo;
+              </button>
+              <div className="carousel-indicators">
+                {clips.map((clip, i) => (
+                  <button
+                    key={clip.id}
+                    type="button"
+                    className={`carousel-dot${i === activeIndex ? ' is-active' : ''}`}
+                    aria-label={`Go to clip ${i + 1}`}
+                    onClick={() => scrollToIndex(i)}
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                className="carousel-nav"
+                aria-label="Next clip"
+                onClick={() => scrollToIndex(activeIndex + 1)}
+                disabled={activeIndex === clips.length - 1}
+              >
+                &rsaquo;
+              </button>
             </div>
           )}
         </>

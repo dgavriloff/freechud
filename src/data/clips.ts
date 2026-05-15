@@ -23,9 +23,4 @@ export const clips: Clip[] = [
     title: 'Hoodie',
     src: '/clips/hoodie.mp4',
   },
-  {
-    id: 'message',
-    title: 'Message',
-    src: '/clips/message.mp4',
-  },
 ]

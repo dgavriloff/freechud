@@ -203,6 +203,24 @@ img {
   border-radius: 2px;
 }
 
+.hero-video {
+  margin: 0 auto 2rem;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.hero-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero-photo figcaption {
   margin-top: 0.75rem;
   font-family: var(--wp-sans);
@@ -636,37 +654,38 @@ img {
   line-height: 1.5;
 }
 
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
 .carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid var(--wp-border);
   background: var(--wp-bg);
   color: var(--wp-accent);
   font-family: var(--wp-sans);
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
 }
 
-.carousel-nav--prev {
-  left: 0.25rem;
-}
-
-.carousel-nav--next {
-  right: 0.25rem;
+.carousel-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 @media (hover: hover) {
-  .carousel-nav:hover {
+  .carousel-nav:not(:disabled):hover {
     background: var(--wp-accent);
     color: #fff;
     border-color: var(--wp-accent);
@@ -675,9 +694,8 @@ img {
 
 .carousel-indicators {
   display: flex;
-  justify-content: center;
+  align-items: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
 }
 
 .carousel-dot {
