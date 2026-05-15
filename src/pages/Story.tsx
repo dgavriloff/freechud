@@ -7,7 +7,9 @@ export default function Story() {
   useEffect(() => {
     const root = ref.current
     if (!root) return
-    const items = root.querySelectorAll('.timeline-event')
+    const items = Array.from(root.querySelectorAll<HTMLElement>('.timeline-event'))
+    if (items.length === 0) return
+
     const obs = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -20,7 +22,44 @@ export default function Story() {
       { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
     )
     items.forEach((item) => obs.observe(item))
-    return () => obs.disconnect()
+
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const containerRect = root.getBoundingClientRect()
+      const firstRect = items[0].getBoundingClientRect()
+      const lastRect = items[items.length - 1].getBoundingClientRect()
+
+      const top = firstRect.top - containerRect.top + firstRect.height / 2
+      const bottom = lastRect.top - containerRect.top + lastRect.height / 2
+      const lineHeight = Math.max(0, bottom - top)
+      root.style.setProperty('--line-top', `${top}px`)
+      root.style.setProperty('--line-height', `${lineHeight}px`)
+
+      const firstCenterVp = firstRect.top + firstRect.height / 2
+      const lastCenterVp = lastRect.top + lastRect.height / 2
+      const trigger = window.innerHeight * 0.5
+      const filled = Math.max(0, Math.min(lastCenterVp - firstCenterVp, trigger - firstCenterVp))
+      root.style.setProperty('--line-progress', `${filled}px`)
+    }
+    const schedule = () => {
+      if (raf) return
+      raf = requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    const ro = new ResizeObserver(schedule)
+    items.forEach((item) => ro.observe(item))
+
+    return () => {
+      obs.disconnect()
+      ro.disconnect()
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+      if (raf) cancelAnimationFrame(raf)
+    }
   }, [])
 
   return (

@@ -412,22 +412,45 @@ img {
 /* Timeline */
 
 .timeline {
+  --spine-x: 1.25rem;
+  --dot-size: 14px;
   position: relative;
   margin: 2rem 0 1rem;
-  padding-left: 2.25rem;
-  border-left: 2px solid var(--wp-border);
+  padding-left: 2.5rem;
+}
+
+.timeline::before,
+.timeline::after {
+  content: '';
+  position: absolute;
+  left: var(--spine-x);
+  width: 2px;
+  margin-left: -1px;
+  top: var(--line-top, 0px);
+  pointer-events: none;
+}
+
+.timeline::before {
+  height: var(--line-height, 0px);
+  background: var(--wp-border);
+}
+
+.timeline::after {
+  height: var(--line-progress, 0px);
+  background: var(--wp-accent);
+  transition: height 0.08s linear;
 }
 
 .timeline-event {
   position: relative;
-  padding-bottom: 2.75rem;
+  margin-bottom: 2.75rem;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .timeline-event:last-child {
-  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .timeline-event.is-visible {
@@ -438,13 +461,15 @@ img {
 .timeline-event::before {
   content: '';
   position: absolute;
-  left: -2.4rem;
-  top: 0.4rem;
-  width: 14px;
-  height: 14px;
+  left: calc(var(--spine-x) - 2.5rem);
+  top: 50%;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  margin-left: calc(var(--dot-size) / -2);
+  margin-top: calc(var(--dot-size) / -2);
   border-radius: 50%;
   background: var(--wp-accent);
-  box-shadow: 0 0 0 4px var(--wp-bg), 0 0 0 6px var(--wp-border);
+  z-index: 1;
 }
 
 .timeline-date {
@@ -497,14 +522,12 @@ img {
 
 @media (max-width: 600px) {
   .timeline {
+    --spine-x: 0.5rem;
+    --dot-size: 10px;
     padding-left: 1.5rem;
   }
   .timeline-event::before {
-    left: -1.9rem;
-    top: 0.35rem;
-    width: 10px;
-    height: 10px;
-    box-shadow: 0 0 0 3px var(--wp-bg), 0 0 0 5px var(--wp-border);
+    left: calc(var(--spine-x) - 1.5rem);
   }
   .timeline-date {
     font-size: 1.125rem;
