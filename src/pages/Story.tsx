@@ -61,7 +61,7 @@ export default function Story() {
       <section className="story-intro">
         <h2 className="page-title">About Chud</h2>
         <p>
-          Dalton Eatherly, known online as Chud, has a rare combination. He has the courage
+          Dalton Eatherly, known online as ChudTheBuilder, has a rare combination. He has the courage
           to speak up when people are breaking rules or behaving badly in public, and the
           calm to stay composed while they get loud, hostile, or violent.
         </p>
