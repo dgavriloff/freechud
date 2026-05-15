@@ -148,7 +148,7 @@ function ClipCard({
   clip: Clip
   videoRef: (el: HTMLVideoElement | null) => void
 }) {
-  const localRef = useRef<HTMLVideoElement>(null)
+  const localRef = useRef<HTMLVideoElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
 
   const embedSrc = clip.youtubeId
