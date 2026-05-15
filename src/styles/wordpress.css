@@ -437,7 +437,7 @@ img {
     align-items: center;
   }
   .site--home .hero-photo img {
-    max-height: calc(100dvh - 280px);
+    max-height: calc(100dvh - 340px);
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -560,5 +560,114 @@ img {
   }
   .timeline-bullets {
     padding-left: 1rem;
+  }
+}
+
+/* Clips carousel */
+
+.muted-note {
+  color: var(--wp-muted);
+  font-style: italic;
+}
+
+.carousel-wrapper {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.carousel {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.25rem 0.25rem 1rem;
+  scrollbar-width: thin;
+}
+
+.carousel-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.carousel-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.carousel-card-media iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.carousel-card-title {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.carousel-card-desc {
+  margin: 0;
+  color: var(--wp-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: calc((320px * 9 / 16) / 2 + 0.25rem);
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--wp-border);
+  background: var(--wp-bg);
+  color: var(--wp-accent);
+  font-family: var(--wp-sans);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-nav--prev {
+  left: -0.5rem;
+}
+
+.carousel-nav--next {
+  right: -0.5rem;
+}
+
+@media (hover: hover) {
+  .carousel-nav {
+    display: flex;
+  }
+  .carousel-nav:hover {
+    background: var(--wp-accent);
+    color: #fff;
+    border-color: var(--wp-accent);
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-card {
+    flex: 0 0 85%;
   }
 }
