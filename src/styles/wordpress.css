@@ -424,10 +424,19 @@ img {
 
 .site-footer {
   border-top: 1px solid var(--wp-border);
-  padding: 2rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   text-align: center;
   color: var(--wp-muted);
   font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 66px;
+  box-sizing: border-box;
+}
+
+.site-footer p {
+  margin: 0;
 }
 
 .site-footer a {
@@ -455,7 +464,7 @@ img {
     padding: 1.5rem 1rem;
   }
   .site-footer {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
     font-size: 0.75rem;
   }
   h1 { font-size: 1.625rem; }
@@ -488,9 +497,6 @@ img {
   .hero-actions .btn {
     max-width: 360px;
     align-self: center;
-  }
-  .site--home .site-footer {
-    padding: 0.75rem 1rem;
   }
 }
 
