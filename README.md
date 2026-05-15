@@ -2,7 +2,7 @@
 
 Website for the FreeChud movement. Built with Vite + React + TypeScript.
 
-Live site: https://freechud.vercel.app
+Live site: https://freechud.com
 
 If you want to help improve this site, you're in the right place. The guide below is written for people who have never opened a pull request before. Take it one step at a time.
 

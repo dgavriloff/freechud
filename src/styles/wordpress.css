@@ -319,15 +319,24 @@ img {
   margin-top: 0;
 }
 
+.page-content p,
+.story-intro p,
+.timeline-bullets li,
+.timeline-lede,
+.fact-block li,
+.pull-quote p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
 .story-intro {
   margin: 0 0 3.5rem;
   max-width: 60ch;
 }
 
 .story-intro p {
-  font-size: 1.0625rem;
-  line-height: 1.75;
   margin: 0 0 1.25rem;
+  line-height: 1.7;
 }
 
 .story-intro p:last-child {
