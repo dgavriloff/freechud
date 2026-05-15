@@ -10,19 +10,6 @@ export default function Story() {
     const items = Array.from(root.querySelectorAll<HTMLElement>('.timeline-event'))
     if (items.length === 0) return
 
-    const obs = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible')
-            obs.unobserve(entry.target)
-          }
-        }
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
-    )
-    items.forEach((item) => obs.observe(item))
-
     let raf = 0
     const update = () => {
       raf = 0
@@ -54,7 +41,6 @@ export default function Story() {
     items.forEach((item) => ro.observe(item))
 
     return () => {
-      obs.disconnect()
       ro.disconnect()
       window.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', schedule)
