@@ -299,6 +299,7 @@ img {
 
 .site-footer a {
   color: var(--wp-muted);
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
