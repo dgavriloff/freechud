@@ -201,12 +201,47 @@ img {
 
 .hero-actions {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 0.875rem;
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
+}
+
+.hero-actions .btn {
+  min-width: 280px;
+}
+
+/* Inner pages (Story, Support) */
+
+.page {
+  max-width: 100%;
+}
+
+.page-back {
+  margin: 0 0 1.5rem;
+  font-family: var(--wp-sans);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.page-back a {
+  color: var(--wp-muted);
+  border-bottom: none;
+}
+
+.page-back a:hover {
+  color: var(--wp-link);
+}
+
+.page-title {
+  margin: 0 0 1.5rem;
+  font-size: 2rem;
+}
+
+.page-content > :first-child {
+  margin-top: 0;
 }
 
 /* Buttons */
@@ -303,25 +338,45 @@ img {
 }
 
 @media (max-width: 600px) {
-  .site {
-    height: 100dvh;
-    min-height: 0;
-    overflow: hidden;
-  }
   .site-header {
-    padding: 1.25rem 1rem 1rem;
+    padding: 1.5rem 1rem 1.25rem;
   }
   .site-title {
     font-size: 1.625rem;
   }
   .site-content {
+    padding: 1.5rem 1rem;
+  }
+  .site-footer {
+    padding: 1rem;
+    font-size: 0.75rem;
+  }
+  h1 { font-size: 1.625rem; }
+  h2 { font-size: 1.375rem; }
+
+  .hero-actions .btn {
+    min-width: 0;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* Home-only: fit one screen, no scroll */
+  .site--home {
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .site--home .site-header {
+    padding: 1.25rem 1rem 1rem;
+  }
+  .site--home .site-content {
     padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 0;
   }
-  .hero {
+  .site--home .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -329,7 +384,7 @@ img {
     min-height: 0;
     flex: 1;
   }
-  .hero-photo {
+  .site--home .hero-photo {
     margin: 0 0 1rem;
     max-width: 100%;
     min-height: 0;
@@ -338,32 +393,18 @@ img {
     flex-direction: column;
     align-items: center;
   }
-  .hero-photo img {
-    max-height: calc(100dvh - 280px);
+  .site--home .hero-photo img {
+    max-height: calc(100dvh - 320px);
     width: auto;
     max-width: 100%;
     object-fit: contain;
   }
-  .hero-photo figcaption {
-    margin-top: 0.5rem;
-  }
-  .hero-actions {
+  .site--home .hero-actions {
     margin-top: 1rem;
     gap: 0.625rem;
-    flex-wrap: nowrap;
     width: 100%;
   }
-  .btn {
-    flex: 1 1 0;
-    min-width: 0;
-    padding: 0.75rem 0.5rem;
-    font-size: 0.8125rem;
-    letter-spacing: 0.05em;
-  }
-  .site-footer {
+  .site--home .site-footer {
     padding: 0.75rem 1rem;
-    font-size: 0.75rem;
   }
-  h1 { font-size: 1.625rem; }
-  h2 { font-size: 1.375rem; }
 }
