@@ -61,15 +61,18 @@ export default function Story() {
       <section className="story-intro">
         <h2 className="page-title">About Chud</h2>
         <p>
-          Chud (legal name Christopher Eatherly) is an independent livestreamer. He built his
-          audience by going live with whatever he's doing &mdash; eating, driving, showing up to
-          court &mdash; and saying what's on his mind.
+          Dalton, known online as Chud, has a rare combination: the courage to speak up when
+          people are breaking rules or behaving badly in public, and the calm to stay composed
+          while they get loud, hostile, or violent.
         </p>
         <p>
-          Like millions of working-class Americans, he's been chased by debt collectors. Like a
-          much smaller number, he livestreamed his run-ins with the police and the courts. In May
-          2026, a single week of those run-ins ended with him on a hospital gurney, in handcuffs,
-          facing 15 to 60 years in prison.
+          He's been physically assaulted more than once for doing it. He keeps the camera
+          rolling, keeps his voice level, and lets the people attacking him show the world who
+          they are. Most people look the other way. Dalton doesn't.
+        </p>
+        <p>
+          He is, in plain terms, an American hero. What follows is what happened the week the
+          state tried to bury him for it.
         </p>
       </section>
 
