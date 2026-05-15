@@ -583,20 +583,26 @@ img {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   padding: 0.25rem 0.25rem 1rem;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .carousel-card {
-  flex: 0 0 320px;
-  scroll-snap-align: start;
+  flex: 0 0 100%;
+  scroll-snap-align: center;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  align-items: center;
 }
 
 .carousel-card-media {
   position: relative;
   width: 100%;
+  max-width: 720px;
   aspect-ratio: 16 / 9;
   background: #000;
   border: 1px solid var(--wp-border);
@@ -613,6 +619,7 @@ img {
   border: 0;
   display: block;
   background: #000;
+  object-fit: contain;
 }
 
 .carousel-card-title {
@@ -631,36 +638,34 @@ img {
 
 .carousel-nav {
   position: absolute;
-  top: calc((320px * 9 / 16) / 2 + 0.25rem);
+  top: 50%;
   transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid var(--wp-border);
   background: var(--wp-bg);
   color: var(--wp-accent);
   font-family: var(--wp-sans);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   line-height: 1;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .carousel-nav--prev {
-  left: -0.5rem;
+  left: 0.25rem;
 }
 
 .carousel-nav--next {
-  right: -0.5rem;
+  right: 0.25rem;
 }
 
 @media (hover: hover) {
-  .carousel-nav {
-    display: flex;
-  }
   .carousel-nav:hover {
     background: var(--wp-accent);
     color: #fff;
@@ -668,8 +673,24 @@ img {
   }
 }
 
-@media (max-width: 600px) {
-  .carousel-card {
-    flex: 0 0 85%;
-  }
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--wp-border);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.carousel-dot.is-active {
+  background: var(--wp-accent);
+  border-color: var(--wp-accent);
 }

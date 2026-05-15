@@ -1,17 +1,48 @@
 import { Link } from 'react-router-dom'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { clips, type Clip } from '../data/clips'
 
 export default function Clips() {
   const carouselRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
 
-  const scrollByCards = (direction: 1 | -1) => {
+  const scrollToIndex = (index: number) => {
     const el = carouselRef.current
     if (!el) return
-    const card = el.querySelector<HTMLElement>('.carousel-card')
-    const step = card ? card.offsetWidth + 20 : el.clientWidth * 0.8
-    el.scrollBy({ left: direction * step, behavior: 'smooth' })
+    const clamped = Math.max(0, Math.min(clips.length - 1, index))
+    const card = el.querySelectorAll<HTMLElement>('.carousel-card')[clamped]
+    if (!card) return
+    el.scrollTo({ left: card.offsetLeft, behavior: 'smooth' })
   }
+
+  useEffect(() => {
+    const el = carouselRef.current
+    if (!el) return
+    let raf = 0
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        const cards = el.querySelectorAll<HTMLElement>('.carousel-card')
+        const center = el.scrollLeft + el.clientWidth / 2
+        let best = 0
+        let bestDist = Infinity
+        cards.forEach((c, i) => {
+          const cardCenter = c.offsetLeft + c.offsetWidth / 2
+          const d = Math.abs(cardCenter - center)
+          if (d < bestDist) {
+            bestDist = d
+            best = i
+          }
+        })
+        setActiveIndex(best)
+      })
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      el.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
 
   return (
     <article className="page">
@@ -30,29 +61,46 @@ export default function Clips() {
       {clips.length === 0 ? (
         <p className="muted-note">Clips coming soon.</p>
       ) : (
-        <div className="carousel-wrapper">
-          <button
-            type="button"
-            className="carousel-nav carousel-nav--prev"
-            aria-label="Previous clip"
-            onClick={() => scrollByCards(-1)}
-          >
-            &lsaquo;
-          </button>
-          <div className="carousel" ref={carouselRef}>
-            {clips.map((clip) => (
-              <ClipCard key={clip.id} clip={clip} />
-            ))}
+        <>
+          <div className="carousel-wrapper">
+            <button
+              type="button"
+              className="carousel-nav carousel-nav--prev"
+              aria-label="Previous clip"
+              onClick={() => scrollToIndex(activeIndex - 1)}
+              disabled={activeIndex === 0}
+            >
+              &lsaquo;
+            </button>
+            <div className="carousel" ref={carouselRef}>
+              {clips.map((clip) => (
+                <ClipCard key={clip.id} clip={clip} />
+              ))}
+            </div>
+            <button
+              type="button"
+              className="carousel-nav carousel-nav--next"
+              aria-label="Next clip"
+              onClick={() => scrollToIndex(activeIndex + 1)}
+              disabled={activeIndex === clips.length - 1}
+            >
+              &rsaquo;
+            </button>
           </div>
-          <button
-            type="button"
-            className="carousel-nav carousel-nav--next"
-            aria-label="Next clip"
-            onClick={() => scrollByCards(1)}
-          >
-            &rsaquo;
-          </button>
-        </div>
+          {clips.length > 1 && (
+            <div className="carousel-indicators">
+              {clips.map((clip, i) => (
+                <button
+                  key={clip.id}
+                  type="button"
+                  className={`carousel-dot${i === activeIndex ? ' is-active' : ''}`}
+                  aria-label={`Go to clip ${i + 1}`}
+                  onClick={() => scrollToIndex(i)}
+                />
+              ))}
+            </div>
+          )}
+        </>
       )}
     </article>
   )
