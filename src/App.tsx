@@ -9,7 +9,6 @@ export default function App() {
         <h1 className="site-title">
           <a href="/">Free Chud the Builder</a>
         </h1>
-        <p className="site-description">A movement to bring Chud home</p>
       </header>
 
       <main className="site-content">
