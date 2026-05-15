@@ -60,30 +60,32 @@ export default function Story() {
 
       <section className="story-intro">
         <h2 className="page-title">About Chud</h2>
+
+        <aside className="story-aside">
+          <h3 className="fact-block-title">DAY 1 IN JAIL</h3>
+          <ul className="fact-block">
+            <li>Held on $1.25 million bond</li>
+            <li>First time facing felony charges</li>
+            <li>Drew his licensed firearm only after being physically attacked</li>
+            <li>Faces 15 to 60 years on the lead charge</li>
+          </ul>
+
+          <blockquote className="pull-quote">
+            <p>"I'm not paying if you are kicking me out."</p>
+            <footer>Dalton at Bob's Steak and Chop House, May 9</footer>
+          </blockquote>
+        </aside>
+
         <p>
-          Dalton Eatherly, known online as ChudTheBuilder, has a rare combination. He has the courage
-          to speak up when people are breaking rules or behaving badly in public, and the
-          calm to stay composed while they get loud, hostile, or violent.
+          Dalton Eatherly, known online as ChudTheBuilder, has a rare combination. He has
+          the courage to speak up when people are breaking rules or behaving badly in
+          public, and the calm to stay composed while they get loud, hostile, or violent.
         </p>
         <p>
           He has been physically assaulted on camera more than once for doing it. He keeps
           the camera rolling, keeps his voice level, and lets the people attacking him show
           the world who they are. Most people look the other way. Dalton does not.
         </p>
-
-        <h3 className="fact-block-title">DAY 1 IN JAIL</h3>
-        <ul className="fact-block">
-          <li>Held on $1.25 million bond</li>
-          <li>First time facing felony charges</li>
-          <li>Drew his licensed firearm only after being physically attacked</li>
-          <li>Faces 15 to 60 years on the lead charge</li>
-        </ul>
-
-        <blockquote className="pull-quote">
-          <p>"I'm not paying if you are kicking me out."</p>
-          <footer>Dalton at Bob's Steak and Chop House, May 9</footer>
-        </blockquote>
-
         <p>
           What follows is what happened that week, step by step.
         </p>

@@ -331,12 +331,32 @@ img {
 
 .story-intro {
   margin: 0 0 3.5rem;
-  max-width: 60ch;
+}
+
+.story-intro::after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
 .story-intro p {
   margin: 0 0 1.25rem;
   line-height: 1.7;
+}
+
+.story-aside {
+  float: right;
+  width: 360px;
+  max-width: 45%;
+  margin: 0 0 1.5rem 2rem;
+}
+
+.story-aside .fact-block-title {
+  margin-top: 0;
+}
+
+.story-aside .pull-quote {
+  margin: 1.25rem 0 0;
 }
 
 .story-intro p:last-child {
@@ -501,6 +521,15 @@ img {
 .site-footer a {
   color: var(--wp-muted);
   text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .story-aside {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 1.5rem 0;
+  }
 }
 
 @media (max-width: 600px) {
