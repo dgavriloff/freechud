@@ -8,7 +8,7 @@
   --wp-link: #007acc;
   --wp-link-hover: #00669b;
   --wp-accent: #1a1a1a;
-  --wp-content-width: 960px;
+  --wp-content-width: 1100px;
   --wp-serif: 'Oswald', 'Helvetica Neue', Helvetica, sans-serif;
   --wp-sans: 'Oswald', 'Helvetica Neue', Helvetica, sans-serif;
 }
@@ -21,6 +21,7 @@
 
 html {
   font-size: 16px;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -118,6 +119,9 @@ img {
   padding: 0.75rem 1.5rem;
   border-bottom: 1px solid var(--wp-border);
   background: var(--wp-bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .navbar-brand {
@@ -130,7 +134,7 @@ img {
 }
 
 .navbar-brand:hover {
-  color: var(--wp-accent);
+  color: var(--wp-link);
   border-bottom: none;
 }
 
@@ -843,4 +847,94 @@ img {
 .carousel-dot.is-active {
   background: var(--wp-accent);
   border-color: var(--wp-accent);
+}
+
+/* Vertical clip list */
+
+.clip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: 2rem 0;
+}
+
+.clip-list .carousel-card {
+  flex: 0 0 auto;
+  scroll-snap-align: none;
+}
+
+/* Assailant page */
+
+.assailant-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.assailant-post {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.assailant-post-placeholder,
+.assailant-map-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  border: 1px dashed var(--wp-border);
+  border-radius: 2px;
+  background: #fafafa;
+  color: var(--wp-muted);
+  font-family: var(--wp-sans);
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.assailant-post-placeholder {
+  aspect-ratio: 4 / 5;
+}
+
+.assailant-post img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+}
+
+.assailant-post figcaption {
+  color: var(--wp-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.assailant-map {
+  margin: 1.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.assailant-map-placeholder {
+  aspect-ratio: 16 / 9;
+}
+
+.assailant-map img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+}
+
+.assailant-map figcaption {
+  color: var(--wp-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
 }
