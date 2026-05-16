@@ -51,9 +51,10 @@ export default function Home() {
             He keeps streaming. He keeps his voice level.
           </p>
           <p>
-            On May 13, 2026, a man walked up to him outside a Tennessee courthouse and
-            attacked him. Dalton drew his licensed firearm to defend himself. The state
-            has charged him with attempted homicide and set his bond at $1.25 million.
+            On May 13, 2026, a man approached him outside a Tennessee courthouse
+            and, according to Dalton, attacked him. Dalton drew his licensed
+            firearm in what he says was self-defense. The state has charged him
+            with attempted homicide and set his bond at $1.25 million.
           </p>
           <p>
             We are just regular people trying to bring him home.
