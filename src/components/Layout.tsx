@@ -14,6 +14,7 @@ export default function Layout() {
         </Link>
         <nav className="navbar-nav" aria-label="Primary">
           <NavLink to="/story">Story</NavLink>
+          <NavLink to="/assailant">Assailant</NavLink>
           <NavLink to="/clips">Clips</NavLink>
           <NavLink to="/support">Support</NavLink>
         </nav>
