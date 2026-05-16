@@ -14,7 +14,7 @@ export default function Layout() {
         </Link>
         <nav className="navbar-nav" aria-label="Primary">
           <NavLink to="/story">Story</NavLink>
-          <NavLink to="/assailant">Assailant</NavLink>
+          <NavLink to="/joshua-fox">Joshua Fox</NavLink>
           <NavLink to="/clips">Clips</NavLink>
           <NavLink to="/support">Support</NavLink>
         </nav>
@@ -25,6 +25,10 @@ export default function Layout() {
       </main>
 
       <footer className="site-footer">
+        <p className="site-footer-disclaimer">
+          Criminal charges and contested facts described on this site are
+          allegations. Everyone is presumed innocent until proven guilty.
+        </p>
         <p>
           Contribute to this website on{' '}
           <a

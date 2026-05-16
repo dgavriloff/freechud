@@ -138,12 +138,12 @@ export default function Story() {
 
           <div className="timeline-sub">
             <p className="timeline-time">~1:20 p.m.</p>
-            <p className="timeline-lede">Outside the courthouse, on his own livestream:</p>
+            <p className="timeline-lede">Outside the courthouse, on Chud's own livestream:</p>
             <ul className="timeline-bullets">
-              <li>A group of people are laughing at him and pointing.</li>
+              <li>A group of people can be seen laughing and pointing in his direction.</li>
               <li>
-                One man, later identified as Joshua Fox, tells him to walk away, then approaches
-                him saying, <em>"I have PTSD."</em>
+                One man, later identified in court filings as Joshua Fox, tells him to walk away,
+                then approaches him saying, <em>"I have PTSD."</em>
               </li>
               <li>
                 In Chud's words:{' '}
@@ -153,6 +153,10 @@ export default function Story() {
               </li>
               <li>Chud draws his firearm and fires. Both men are hit.</li>
             </ul>
+            <p className="muted-note">
+              Exactly who initiated physical contact is disputed and is a matter
+              for the courts to decide.
+            </p>
           </div>
 
           <div className="timeline-sub">
