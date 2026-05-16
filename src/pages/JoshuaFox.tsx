@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export default function Assailant() {
+export default function JoshuaFox() {
   return (
     <article className="page">
       <p className="page-back">
@@ -8,7 +8,7 @@ export default function Assailant() {
       </p>
 
       <section className="story-intro">
-        <h2 className="page-title">The Assailant</h2>
+        <h2 className="page-title">Joshua Fox</h2>
 
         <aside className="story-aside">
           <h3 className="fact-block-title">AT A GLANCE</h3>
@@ -41,7 +41,7 @@ export default function Assailant() {
           Screenshots that appear to be from an X account attributed to Joshua
           Fox, in which he allegedly stated intent to harm Dalton. Readers can
           review them and judge for themselves. TODO: replace placeholders with
-          real screenshots saved to <code>public/assailant/</code>.
+          real screenshots saved to <code>public/joshua-fox/</code>.
         </p>
 
         <div className="assailant-posts">

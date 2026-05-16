@@ -512,10 +512,18 @@ img {
   color: var(--wp-muted);
   font-size: 0.875rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.25rem;
   min-height: 66px;
   box-sizing: border-box;
+}
+
+.site-footer-disclaimer {
+  max-width: 60ch;
+  font-size: 0.8125rem;
+  line-height: 1.4;
 }
 
 .site-footer p {
