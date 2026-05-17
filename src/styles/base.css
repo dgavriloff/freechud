@@ -93,6 +93,10 @@ img {
   height: auto;
 }
 
+video.is-ready {
+  opacity: 1;
+}
+
 
 @media (max-width: 600px) {
   h1 { font-size: 1.625rem; }

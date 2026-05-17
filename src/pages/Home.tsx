@@ -16,6 +16,12 @@ export default function Home() {
               controls
               playsInline
               preload="metadata"
+              onLoadedMetadata={(e) => {
+                e.currentTarget.currentTime = 0.001
+              }}
+              onSeeked={(e) => {
+                e.currentTarget.classList.add('is-ready')
+              }}
             />
           </figure>
 
@@ -76,6 +82,12 @@ export default function Home() {
                   controls
                   playsInline
                   preload="metadata"
+                  onLoadedMetadata={(e) => {
+                    e.currentTarget.currentTime = 0.001
+                  }}
+                  onSeeked={(e) => {
+                    e.currentTarget.classList.add('is-ready')
+                  }}
                 />
               </div>
               <div className="home-video-copy">
