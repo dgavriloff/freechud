@@ -9,6 +9,7 @@ export default function Story() {
     if (!root) return
     const items = Array.from(root.querySelectorAll<HTMLElement>('.timeline-event'))
     if (items.length === 0) return
+    const scrollContainer = root.closest<HTMLElement>('.site-scroll')
 
     let raf = 0
     const update = () => {
@@ -16,6 +17,7 @@ export default function Story() {
       const containerRect = root.getBoundingClientRect()
       const firstRect = items[0].getBoundingClientRect()
       const lastRect = items[items.length - 1].getBoundingClientRect()
+      const scrollerRect = scrollContainer?.getBoundingClientRect()
 
       const top = firstRect.top - containerRect.top + firstRect.height / 2
       const bottom = lastRect.top - containerRect.top + lastRect.height / 2
@@ -24,13 +26,18 @@ export default function Story() {
       root.style.setProperty('--line-height', `${lineHeight}px`)
 
       const doc = document.documentElement
-      const halfVh = window.innerHeight / 2
-      const firstCenterAbs = firstRect.top + firstRect.height / 2 + window.scrollY
+      const scrollTop = scrollContainer ? scrollContainer.scrollTop : window.scrollY
+      const viewportHeight = scrollContainer ? scrollContainer.clientHeight : window.innerHeight
+      const scrollHeight = scrollContainer ? scrollContainer.scrollHeight : doc.scrollHeight
+      const firstCenterAbs = scrollContainer && scrollerRect
+        ? firstRect.top - scrollerRect.top + scrollContainer.scrollTop + firstRect.height / 2
+        : firstRect.top + firstRect.height / 2 + window.scrollY
+      const halfVh = viewportHeight / 2
       const startScroll = firstCenterAbs - halfVh
-      const endScroll = doc.scrollHeight - window.innerHeight
+      const endScroll = scrollHeight - viewportHeight
       const span = endScroll - startScroll
       const ratio =
-        span > 0 ? Math.max(0, Math.min(1, (window.scrollY - startScroll) / span)) : 0
+        span > 0 ? Math.max(0, Math.min(1, (scrollTop - startScroll) / span)) : 0
       root.style.setProperty('--line-progress', `${lineHeight * ratio}px`)
     }
     const schedule = () => {
@@ -39,14 +46,15 @@ export default function Story() {
     }
 
     update()
-    window.addEventListener('scroll', schedule, { passive: true })
+    const scrollTarget: HTMLElement | Window = scrollContainer ?? window
+    scrollTarget.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', schedule)
     const ro = new ResizeObserver(schedule)
     items.forEach((item) => ro.observe(item))
 
     return () => {
       ro.disconnect()
-      window.removeEventListener('scroll', schedule)
+      scrollTarget.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', schedule)
       if (raf) cancelAnimationFrame(raf)
     }

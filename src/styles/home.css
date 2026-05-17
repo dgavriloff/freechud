@@ -1,0 +1,417 @@
+/* Hero */
+
+.site--home .site-content {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.home-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 2rem;
+  width: 100%;
+}
+
+.hero-video {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  overflow: hidden;
+  flex: 0 0 auto;
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  font: inherit;
+  color: inherit;
+}
+
+.hero-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.hero-video-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.hero-aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 1.5rem;
+}
+
+.hero-summary {
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  background: var(--wp-bg);
+  padding: 1.75rem 1.75rem 1.5rem;
+  text-align: left;
+}
+
+.hero-summary-title {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  letter-spacing: 0.01em;
+}
+
+.hero-summary p {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+
+.hero-summary p:last-child {
+  margin-bottom: 0;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: stretch;
+  margin: 0;
+}
+
+.hero-actions .btn {
+  min-width: 0;
+  width: 100%;
+}
+
+.hero .hero-actions {
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.hero .hero-actions .btn {
+  width: auto;
+  min-width: 12rem;
+}
+
+.home-section {
+  border-top: 1px solid var(--wp-border);
+  padding-top: 2rem;
+}
+
+.home-section--split {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.section-kicker {
+  margin: 0 0 0.5rem;
+  color: var(--wp-muted);
+  font-family: var(--wp-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.home-section-title {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.home-copy p {
+  margin: 0 0 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+.home-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.home-link-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.home-link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 9rem;
+  padding: 1.25rem;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  color: var(--wp-accent);
+  background: var(--wp-bg);
+}
+
+.home-link-card:hover,
+.home-link-card:focus {
+  color: var(--wp-accent);
+  border-color: var(--wp-accent);
+}
+
+.home-link-card span {
+  font-family: var(--wp-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.home-link-card small {
+  color: var(--wp-muted);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  font-family: var(--wp-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bail-chart-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
+  gap: 1.5rem;
+  align-items: end;
+  margin-bottom: 1.5rem;
+}
+
+.bail-chart-note {
+  margin: 0;
+  color: var(--wp-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.bail-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: #f3f3f3;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+}
+
+.bail-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 190px) minmax(0, 1fr) 4.5rem;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.bail-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  text-align: right;
+  line-height: 1.25;
+}
+
+.bail-label strong {
+  font-size: 0.9375rem;
+}
+
+.bail-label span {
+  color: var(--wp-muted);
+  font-size: 0.8125rem;
+}
+
+.bail-bar-track {
+  min-width: 0;
+  height: 2rem;
+  background: #e5e5e5;
+  position: relative;
+  overflow: hidden;
+}
+
+.bail-bar {
+  height: 100%;
+  min-width: 2px;
+  background: #3b7fc5;
+}
+
+.bail-row--gold .bail-bar {
+  background: #d6ad3c;
+}
+
+.bail-row--red .bail-bar {
+  background: #c7362e;
+}
+
+.bail-value {
+  color: var(--wp-accent);
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.bail-row--red .bail-value {
+  color: #c7362e;
+  font-size: 1.125rem;
+}
+
+.home-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  background: #f7f7f7;
+}
+
+.home-cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 720px) {
+  .home-section--split,
+  .bail-chart-header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .home-link-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-cta {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .home-cta-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero .hero-actions .btn {
+    min-width: 0;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .hero-video {
+    max-width: min(420px, 80vw);
+  }
+
+  .hero-aside {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .hero-summary {
+    padding: 1.25rem;
+  }
+
+  .hero-summary-title,
+  .home-section-title {
+    font-size: 1.625rem;
+  }
+
+  .hero-summary p,
+  .home-copy p {
+    font-size: 1.0625rem;
+  }
+
+  .hero .hero-actions {
+    align-items: center;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .hero .hero-actions .btn {
+    max-width: 360px;
+    align-self: center;
+  }
+
+  .home-page {
+    gap: 2.5rem;
+  }
+
+  .home-link-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-link-card {
+    min-height: 0;
+  }
+
+
+  .home-section {
+    padding-top: 1.5rem;
+  }
+
+  .bail-chart {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .bail-row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .bail-label {
+    text-align: left;
+  }
+
+  .bail-bar-track {
+    height: 1.5rem;
+  }
+
+  .home-cta {
+    padding: 1.25rem;
+  }
+}

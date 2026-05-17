@@ -13,34 +13,27 @@ export default function Layout() {
           <span className="navbar-name">FREE CHUD</span>
         </Link>
         <nav className="navbar-nav" aria-label="Primary">
-          <NavLink to="/story">Story</NavLink>
-          <NavLink to="/joshua-fox">Joshua Fox</NavLink>
-          <NavLink to="/clips">Clips</NavLink>
+          <NavLink to="/" end>
+            Home
+          </NavLink>
+          <NavLink to="/story">What Happened</NavLink>
+          <NavLink to="/why-this-matters">Why This Matters</NavLink>
           <NavLink to="/support">Support</NavLink>
         </nav>
       </header>
 
-      <main className="site-content">
-        <Outlet />
-      </main>
+      <div className="site-scroll">
+        <main className="site-content">
+          <Outlet />
+        </main>
 
-      <footer className="site-footer">
-        <p className="site-footer-disclaimer">
-          Criminal charges and contested facts described on this site are
-          allegations. Everyone is presumed innocent until proven guilty.
-        </p>
-        <p>
-          Contribute to this website on{' '}
-          <a
-            href="https://github.com/dgavriloff/freechud"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          .
-        </p>
-      </footer>
+        <footer className="site-footer">
+          <p className="site-footer-disclaimer">
+            Criminal charges and contested facts described on this site are
+            allegations. Everyone is presumed innocent until proven guilty.
+          </p>
+        </footer>
+      </div>
     </div>
   )
 }

@@ -39,6 +39,17 @@ export default function Support() {
         <p className="muted-note">
           We are just regular people working every day to help Dalton.
         </p>
+        <p>
+          Want to improve this website? Contribute on{' '}
+          <a
+            href="https://github.com/dgavriloff/freechud"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          .
+        </p>
       </div>
     </article>
   )

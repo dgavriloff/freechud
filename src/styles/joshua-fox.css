@@ -1,0 +1,75 @@
+/* Assailant page */
+
+.assailant-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.assailant-post {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.assailant-post-placeholder,
+.assailant-map-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  border: 1px dashed var(--wp-border);
+  border-radius: 2px;
+  background: #fafafa;
+  color: var(--wp-muted);
+  font-family: var(--wp-sans);
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.assailant-post-placeholder {
+  aspect-ratio: 4 / 5;
+}
+
+.assailant-post img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+}
+
+.assailant-post figcaption {
+  color: var(--wp-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.assailant-map {
+  margin: 1.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.assailant-map-placeholder {
+  aspect-ratio: 16 / 9;
+}
+
+.assailant-map img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+}
+
+.assailant-map figcaption {
+  color: var(--wp-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}

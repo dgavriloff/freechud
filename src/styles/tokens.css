@@ -1,0 +1,15 @@
+/* WordPress default theme styling (classic Twenty Sixteen / Twenty Seventeen look) */
+
+:root {
+  --wp-bg: #ffffff;
+  --wp-text: #1a1a1a;
+  --wp-muted: #767676;
+  --wp-border: #d1d1d1;
+  --wp-link: #007acc;
+  --wp-link-hover: #00669b;
+  --wp-accent: #1a1a1a;
+  --wp-content-width: 1100px;
+  --wp-serif: 'Oswald', 'Helvetica Neue', Helvetica, sans-serif;
+  --wp-sans: 'Oswald', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
