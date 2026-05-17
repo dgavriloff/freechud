@@ -85,10 +85,7 @@ export default function WhyThisMatters() {
           <ol>
             <li id="source-knapton">
               <span className="source-marker">*</span>
-              <strong>Dayton Knapton case:</strong> White Lake Township,
-              Michigan; July 8, 2025 garage shooting; homeowner charged after
-              an alleged garage break-in; Matthew Grinage later sentenced to
-              365 days in county jail. Sources:{' '}
+              <strong>Dayton Knapton case:</strong> Sources:{' '}
               <a
                 href="https://www.fox2detroit.com/news/oakland-county-man-charged-deadly-shooting-teen-burglar-appear-court"
                 target="_blank"
@@ -116,12 +113,10 @@ export default function WhyThisMatters() {
               >
                 ArchetypeTheory on X
               </a>
-              . ArchetypeTheory described the data work as: "I went back 8 years
-              into Montgomery County's public court records." He also described
-              building automated scrapers, reviewing more than 10,000 criminal
-              cases, scanning news articles, and cross-referencing findings
-              against the court system. Full report and underlying case list
-              should be linked when available.
+              . The comparison is based on 8 years of Montgomery County public
+              court records, with more than 10,000 criminal cases investigated,
+              related news articles reviewed, and findings cross-referenced
+              against the court system.
             </li>
           </ol>
         </section>
