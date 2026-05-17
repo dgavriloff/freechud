@@ -16,6 +16,9 @@ export default function Home() {
               controls
               playsInline
               preload="metadata"
+              onLoadedMetadata={(e) => {
+                e.currentTarget.currentTime = 0.001
+              }}
             />
           </figure>
 
@@ -76,6 +79,9 @@ export default function Home() {
                   controls
                   playsInline
                   preload="metadata"
+                  onLoadedMetadata={(e) => {
+                    e.currentTarget.currentTime = 0.001
+                  }}
                 />
               </div>
               <div className="home-video-copy">
