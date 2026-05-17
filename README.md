@@ -122,7 +122,9 @@ npm run preview # preview the production build locally
 npm run lint    # run eslint
 ```
 
-Pages live in `src/pages/`, shared styles in `src/styles/wordpress.css`, the clip list in `src/data/clips.ts`, and the layout shell in `src/components/Layout.tsx`. The site deploys to Vercel from `main` on every push.
+Pages live in `src/pages/`, shared styles in `src/styles/`, the clip list in `src/data/clips.ts`, and the layout shell in `src/components/Layout.tsx`. The site deploys to Vercel from `main` on every push.
+
+Before adding larger changes, skim [`code_standards.md`](code_standards.md) so pages, data, assets, and styling stay organized.
 
 ---
 

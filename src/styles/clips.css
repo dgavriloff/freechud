@@ -1,0 +1,148 @@
+/* Clips carousel */
+
+.muted-note {
+  color: var(--wp-muted);
+  font-style: italic;
+}
+
+.carousel-wrapper {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.carousel {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.25rem 0.25rem 1rem;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-card {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.carousel-card-media {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.carousel-card-media iframe,
+.carousel-card-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #000;
+  object-fit: contain;
+}
+
+.carousel-card-title {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.carousel-card-desc {
+  margin: 0;
+  color: var(--wp-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.carousel-nav {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--wp-border);
+  background: var(--wp-bg);
+  color: var(--wp-accent);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-nav svg {
+  display: block;
+}
+
+.carousel-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+@media (hover: hover) {
+  .carousel-nav:not(:disabled):hover {
+    background: var(--wp-accent);
+    color: #fff;
+    border-color: var(--wp-accent);
+  }
+}
+
+.carousel-indicators {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--wp-border);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.carousel-dot.is-active {
+  background: var(--wp-accent);
+  border-color: var(--wp-accent);
+}
+
+/* Vertical clip list */
+
+.clip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: 2rem 0;
+}
+
+.clip-list .carousel-card {
+  flex: 0 0 auto;
+  scroll-snap-align: none;
+}
+

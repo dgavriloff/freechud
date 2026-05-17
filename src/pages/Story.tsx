@@ -1,5 +1,24 @@
-import { Link } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
+
+const storySources = {
+  courthouseInitial:
+    'https://www.wsmv.com/2026/05/13/social-media-personality-another-injured-after-fight-leads-shooting-outside-montgomery-county-courthouse/',
+  courtAppearance:
+    'https://www.wsmv.com/2026/05/15/controversial-streamer-dalton-eatherly-appears-before-judge-following-shooting-outside-clarksville-courthouse/',
+  civilDocket:
+    'https://montgomerytn.gov/storage/departments/circuit/docket/General%20Sessions-Civil/Poland%2005-13-26.pdf',
+  judgeProfile:
+    'https://www.tncourts.gov/courts/general-sessions-courts/judges/reid-poland',
+  attorneyProfile: 'https://fendleylaw.com/about/jacob-w-fendley/',
+}
+
+function SourceLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  )
+}
 
 export default function Story() {
   const ref = useRef<HTMLDivElement>(null)
@@ -9,6 +28,7 @@ export default function Story() {
     if (!root) return
     const items = Array.from(root.querySelectorAll<HTMLElement>('.timeline-event'))
     if (items.length === 0) return
+    const scrollContainer = root.closest<HTMLElement>('.site-scroll')
 
     let raf = 0
     const update = () => {
@@ -16,22 +36,52 @@ export default function Story() {
       const containerRect = root.getBoundingClientRect()
       const firstRect = items[0].getBoundingClientRect()
       const lastRect = items[items.length - 1].getBoundingClientRect()
+      const scrollerRect = scrollContainer?.getBoundingClientRect()
+      const timelineStyles = getComputedStyle(root)
+      const dotOffset =
+        Number.parseFloat(timelineStyles.getPropertyValue('--dot-offset')) || 0
+      const dotSize =
+        Number.parseFloat(timelineStyles.getPropertyValue('--dot-size')) || 0
+      const dotRadius = dotSize / 2
 
-      const top = firstRect.top - containerRect.top + firstRect.height / 2
-      const bottom = lastRect.top - containerRect.top + lastRect.height / 2
+      const top = firstRect.top - containerRect.top + dotOffset + dotRadius
+      const bottom = lastRect.top - containerRect.top + dotOffset - dotRadius
       const lineHeight = Math.max(0, bottom - top)
       root.style.setProperty('--line-top', `${top}px`)
       root.style.setProperty('--line-height', `${lineHeight}px`)
 
       const doc = document.documentElement
-      const halfVh = window.innerHeight / 2
-      const firstCenterAbs = firstRect.top + firstRect.height / 2 + window.scrollY
+      const scrollTop = scrollContainer ? scrollContainer.scrollTop : window.scrollY
+      const viewportHeight = scrollContainer ? scrollContainer.clientHeight : window.innerHeight
+      const scrollHeight = scrollContainer ? scrollContainer.scrollHeight : doc.scrollHeight
+      const viewportAnchor = scrollContainer && scrollerRect
+        ? scrollerRect.top + viewportHeight * 0.35
+        : viewportHeight * 0.35
+      const firstCenterAbs = scrollContainer && scrollerRect
+        ? firstRect.top - scrollerRect.top + scrollContainer.scrollTop + dotOffset
+        : firstRect.top + dotOffset + window.scrollY
+      const halfVh = viewportHeight / 2
       const startScroll = firstCenterAbs - halfVh
-      const endScroll = doc.scrollHeight - window.innerHeight
+      const endScroll = scrollHeight - viewportHeight
       const span = endScroll - startScroll
       const ratio =
-        span > 0 ? Math.max(0, Math.min(1, (window.scrollY - startScroll) / span)) : 0
+        span > 0 ? Math.max(0, Math.min(1, (scrollTop - startScroll) / span)) : 0
       root.style.setProperty('--line-progress', `${lineHeight * ratio}px`)
+
+      const activeIndex = items.reduce((closestIndex, item, index) => {
+        const rect = item.getBoundingClientRect()
+        const dotCenter = rect.top + dotOffset
+        const closestRect = items[closestIndex].getBoundingClientRect()
+        const closestCenter = closestRect.top + dotOffset
+
+        return Math.abs(dotCenter - viewportAnchor) < Math.abs(closestCenter - viewportAnchor)
+          ? index
+          : closestIndex
+      }, 0)
+
+      items.forEach((item, index) => {
+        item.classList.toggle('is-active', index === activeIndex)
+      })
     }
     const schedule = () => {
       if (raf) return
@@ -39,14 +89,15 @@ export default function Story() {
     }
 
     update()
-    window.addEventListener('scroll', schedule, { passive: true })
+    const scrollTarget: HTMLElement | Window = scrollContainer ?? window
+    scrollTarget.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', schedule)
     const ro = new ResizeObserver(schedule)
     items.forEach((item) => ro.observe(item))
 
     return () => {
       ro.disconnect()
-      window.removeEventListener('scroll', schedule)
+      scrollTarget.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', schedule)
       if (raf) cancelAnimationFrame(raf)
     }
@@ -54,56 +105,65 @@ export default function Story() {
 
   return (
     <article className="page">
-      <p className="page-back">
-        <Link to="/">&larr; Back</Link>
-      </p>
-
       <section className="story-intro">
-        <h2 className="page-title">About Chud</h2>
+        <h2 className="page-title">WHAT HAPPENED</h2>
 
-        <aside className="story-aside">
-          <h3 className="fact-block-title">DAY 1 IN JAIL</h3>
-          <ul className="fact-block">
-            <li>Held on $1.25 million bond</li>
-            <li>First time facing felony charges</li>
-            <li>Drew his licensed firearm only after being physically attacked</li>
-            <li>Faces 15 to 60 years on the lead charge</li>
-          </ul>
+        <div className="story-intro-grid">
+          <img
+            className="story-intro-image"
+            src="/images/dalton-cowboy-hat.jfif"
+            alt="Dalton Eatherly in a cowboy hat"
+          />
 
-          <blockquote className="pull-quote">
-            <p>"I'm not paying if you are kicking me out."</p>
-            <footer>Dalton at Bob's Steak and Chop House, May 9</footer>
-          </blockquote>
-        </aside>
+          <div className="story-summary-column">
+            <p className="story-demeanor">
+              Dalton is known by supporters for keeping calm while recording
+              public encounters. Even when people get loud or hostile, he keeps
+              the camera rolling and documents what happens.
+            </p>
+            <p className="story-demeanor">
+              Dalton was assaulted in front of the courthouse where after the
+              initial assault as he fought off his attacker his firearm was
+              discharged. These are a recollection of events from eye witnesses.
+              The full recounting of events will be presented by his attorney.
+            </p>
 
-        <p>
-          Dalton Eatherly, known online as ChudTheBuilder, has a rare combination. He has
-          the courage to speak up when people are breaking rules or behaving badly in
-          public, and the calm to stay composed while they get loud, hostile, or violent.
-        </p>
-        <p>
-          He has been physically assaulted on camera more than once for doing it. He keeps
-          the camera rolling, keeps his voice level, and lets the people attacking him show
-          the world who they are. Most people look the other way. Dalton does not.
-        </p>
-        <p>
-          What follows is what happened that week, step by step.
-        </p>
+            <blockquote className="pull-quote">
+              <p>"I'm not paying if you are kicking me out."</p>
+              <footer>Dalton at Bob's Steak and Chop House, May 9</footer>
+            </blockquote>
+          </div>
+
+          <aside className="story-aside">
+            <h3 className="fact-block-title">KEY FACTS</h3>
+            <ul className="fact-block">
+              <li>Self-defense - straight to jail</li>
+              <li>Held on $1.25 million bond</li>
+              <li>First time facing felony charges</li>
+              <li>Drew his licensed firearm only after being physically attacked</li>
+              <li>Faces 15 to 60 years on the lead charge</li>
+            </ul>
+          </aside>
+        </div>
       </section>
 
       <section className="story-events">
-        <h2 className="page-title">WHAT HAPPENED</h2>
+        <p className="section-kicker section-kicker--large story-section-title">
+          Event summary
+        </p>
 
         <div className="timeline" ref={ref}>
         <section className="timeline-event">
           <h3 className="timeline-date">Saturday, May 9, Nashville</h3>
           <ul className="timeline-bullets">
-            <li>Chud is at Bob's Steak &amp; Chop House while livestreaming.</li>
+            <li>
+              Dalton is at Bob's Steak &amp; Chop House while livestreaming.
+            </li>
             <li>Staff tell him to stop streaming. He keeps going. Streaming is what he does.</li>
             <li>Restaurant moves to kick him out before he's eaten his food.</li>
             <li>They still want him to pay the $371.55 bill on the way out.</li>
             <li>
-              Chud refuses: <em>"I'm not paying if you are kicking me out."</em>
+              Dalton refuses: <em>"I'm not paying if you are kicking me out."</em>
             </li>
           </ul>
         </section>
@@ -130,28 +190,32 @@ export default function Story() {
             <p className="timeline-time">9:00 a.m.</p>
             <ul className="timeline-bullets">
               <li>
-                He has a civil hearing at Montgomery County Courthouse over an alleged $3,300 debt
-                brought by Midland Credit Management, a debt-buyer collection case.
+                He has a{' '}
+                <SourceLink href={storySources.civilDocket}>
+                  civil hearing at Montgomery County Courthouse
+                </SourceLink>{' '}
+                over an alleged $3,300 debt brought by Midland Credit Management, a debt-buyer
+                collection case.
               </li>
             </ul>
           </div>
 
           <div className="timeline-sub">
             <p className="timeline-time">~1:20 p.m.</p>
-            <p className="timeline-lede">Outside the courthouse, on Chud's own livestream:</p>
+            <p className="timeline-lede">Outside the courthouse, on Dalton's own livestream:</p>
             <ul className="timeline-bullets">
               <li>A group of people can be seen laughing and pointing in his direction.</li>
               <li>
-                One man, later identified in court filings as Joshua Fox, tells him to walk away,
-                then approaches him saying, <em>"I have PTSD."</em>
+                One man, later identified in court filings as Joshua Fox, tells
+                him to walk away, then approaches him saying, <em>"I have PTSD."</em>
               </li>
               <li>
-                In Chud's words:{' '}
+                In Dalton's words:{' '}
                 <em>
                   "He started whaling on me, even after I had to defend myself by shooting him."
                 </em>
               </li>
-              <li>Chud draws his firearm and fires. Both men are hit.</li>
+              <li>Dalton draws his firearm and fires. Both men are hit.</li>
             </ul>
             <p className="muted-note">
               Exactly who initiated physical contact is disputed and is a matter
@@ -163,8 +227,11 @@ export default function Story() {
             <p className="timeline-time">Shortly after</p>
             <ul className="timeline-bullets">
               <li>
-                Sheriff's deputies and Clarksville PD arrive. Both men are transported to hospitals
-                in stable condition. Chud continues livestreaming from the gurney.
+                Sheriff's deputies and Clarksville PD arrive.{' '}
+                <SourceLink href={storySources.courthouseInitial}>
+                  Both men are transported to hospitals in stable condition
+                </SourceLink>
+                . Dalton continues livestreaming from the gurney.
               </li>
             </ul>
           </div>
@@ -173,20 +240,34 @@ export default function Story() {
         <section className="timeline-event">
           <h3 className="timeline-date">Friday, May 15, Arraignment</h3>
           <ul className="timeline-bullets">
-            <li>Chud appears in court from the hospital.</li>
+            <li>Dalton appears in court from the hospital.</li>
             <li>
-              The state stacks the charges: attempted criminal homicide, employing a firearm during
-              a dangerous felony, aggravated assault, and reckless endangerment.
+              The state stacks the charges:{' '}
+              <SourceLink href={storySources.courtAppearance}>
+                attempted criminal homicide, employing a firearm during a dangerous felony,
+                aggravated assault, and reckless endangerment
+              </SourceLink>
+              .
             </li>
             <li>
-              Judge Reid Poland III sets bond at <strong>$1.25 million</strong>, a bond that's
-              effectively impossible for an ordinary person to post.
+              <SourceLink href={storySources.judgeProfile}>Judge Reid Poland III</SourceLink>{' '}
+              sets bond at{' '}
+              <SourceLink href={storySources.courtAppearance}>
+                <strong>$1.25 million</strong>
+              </SourceLink>
+              , a bond that's effectively impossible for an ordinary person to post.
             </li>
             <li>Attempted criminal homicide carries 15 to 60 years in Tennessee.</li>
-            <li>Chud closes his eyes when the bond is read out.</li>
+            <li>Dalton closes his eyes when the bond is read out.</li>
             <li>
-              Preliminary hearing set for <strong>May 26</strong>. Jake Fendley appointed as his
-              attorney.
+              <SourceLink href={storySources.courtAppearance}>
+                Preliminary hearing set for <strong>May 26</strong>
+              </SourceLink>
+              .{' '}
+              <SourceLink href={storySources.attorneyProfile}>
+                Jake Fendley appointed as his attorney
+              </SourceLink>
+              .
             </li>
           </ul>
         </section>

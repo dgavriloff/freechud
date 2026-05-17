@@ -1,3 +1,7 @@
-export const CHUD_PHOTO_URL = 'https://i.ibb.co/mCK7vXNw/IMG-4070.jpg'
+export const CHUD_PHOTO_URL = '/images/dalton-white-sleeveless.jfif'
+export const CHUD_ICON_URL = '/images/free-chud-icon.png'
 export const GIVESENDGO_URL = 'https://www.givesendgo.com/HelpChud'
 export const PUMPFUN_URL = 'https://join.pump.fun/HSag/fiqjlk67'
+export const TSHIRT_URL = 'https://whiteexcellence.org/product/free-chud-001/?v'
+export const CONTACT_X_URL = 'https://x.com/Tomhennessey69'
+export const CONTACT_EMAIL = 'cjay@wcaproject.com'
