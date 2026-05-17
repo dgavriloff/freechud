@@ -214,6 +214,56 @@
   border-bottom: none;
 }
 
+.citation-mark {
+  font-family: var(--wp-sans);
+  font-size: 0.75em;
+  line-height: 0;
+}
+
+.citation-mark a {
+  border-bottom: none;
+  color: var(--wp-link);
+  text-decoration: none;
+}
+
+.source-notes {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--wp-border);
+  color: var(--wp-muted);
+}
+
+.source-notes h3 {
+  margin: 0 0 0.75rem;
+  color: var(--wp-accent);
+  font-size: 1.25rem;
+}
+
+.source-notes ol {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.source-notes li {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.source-notes strong {
+  color: var(--wp-accent);
+}
+
+.source-marker {
+  display: inline-block;
+  width: 1.25rem;
+  color: var(--wp-link);
+  font-family: var(--wp-sans);
+  font-weight: 600;
+}
+
 .pull-quote {
   margin: 1.5rem 0;
   padding: 0.5rem 0 0.5rem 1rem;
@@ -250,10 +300,10 @@
   gap: 1.5rem;
   align-items: stretch;
   margin: 0 0 2rem;
-  padding: 1.5rem;
-  border: 2px solid var(--wp-accent);
+  padding: 0;
+  border: 0;
   border-radius: 2px;
-  background: #f7f7f7;
+  background: transparent;
 }
 
 .support-donate-copy h3 {
@@ -354,25 +404,23 @@
 .support-milestones {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .support-milestone {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 1rem;
-  border: 1px solid var(--wp-border);
-  border-radius: 2px;
-  background: var(--wp-bg);
+  padding: 0;
+  border-bottom: none;
   color: var(--wp-text);
   text-decoration: none;
 }
 
 .support-milestone:hover,
 .support-milestone:focus {
+  border-bottom: none;
   color: var(--wp-text);
-  border-color: var(--wp-accent);
 }
 
 .support-milestone:focus-visible {
@@ -400,6 +448,7 @@
   font-family: var(--wp-sans);
   font-size: 1.5rem;
   line-height: 1;
+  transition: color 0.15s ease;
 }
 
 .support-meter {
@@ -413,6 +462,11 @@
   display: block;
   height: 100%;
   background: var(--wp-accent);
+}
+
+.support-milestone:hover .support-milestone-header strong,
+.support-milestone:focus .support-milestone-header strong {
+  color: var(--wp-link);
 }
 
 .support-milestone p {

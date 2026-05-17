@@ -19,7 +19,18 @@ export default function BailComparisonChart() {
           key={item.label}
         >
           <div className="bail-label">
-            <strong>{item.label}</strong>
+            {item.sourceUrl ? (
+              <a
+                className="bail-source-link"
+                href={item.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <strong>{item.label}</strong>
+            )}
             <span>{item.detail}</span>
           </div>
           <div className="bail-bar-track">

@@ -61,9 +61,8 @@ export default function Support() {
             <h3>Help bring Dalton home.</h3>
             <p>
               The bond is $1.25 million. The lead charge carries 15 to 60 years.
-              Dalton needs an attorney who can fight, and his family needs to
-              keep the lights on while they fight for him, and to provide for
-              his family.
+              Dalton needs an attorney who can fight, and to provide for his
+              family during these hard times.
             </p>
             <p>
               Every dollar goes to his legal defense and his family's living

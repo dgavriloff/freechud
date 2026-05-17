@@ -232,6 +232,21 @@
   line-height: 1.5;
 }
 
+.bail-chart-note--below {
+  margin-top: 0.75rem;
+}
+
+.title-attribution {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--wp-muted);
+  font-family: var(--wp-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .bail-chart {
   display: flex;
   flex-direction: column;
@@ -257,8 +272,21 @@
   line-height: 1.25;
 }
 
-.bail-label strong {
+.bail-label strong,
+.bail-source-link {
+  color: var(--wp-accent);
   font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.bail-source-link {
+  border-bottom: 1px solid currentColor;
+  text-decoration: none;
+}
+
+.bail-source-link:hover,
+.bail-source-link:focus {
+  color: var(--wp-link);
 }
 
 .bail-label span {
