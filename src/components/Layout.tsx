@@ -1,5 +1,5 @@
 import { Outlet, Link, NavLink, useLocation } from 'react-router-dom'
-import { CHUD_PHOTO_URL } from '../constants'
+import { CHUD_ICON_URL } from '../constants'
 
 export default function Layout() {
   const { pathname } = useLocation()
@@ -10,7 +10,7 @@ export default function Layout() {
       <header className="navbar">
         <Link to="/" className="navbar-brand">
           <span className="navbar-logo">
-            <img src={CHUD_PHOTO_URL} alt="" />
+            <img src={CHUD_ICON_URL} alt="" />
           </span>
           <span className="navbar-name">FREE CHUD</span>
         </Link>

@@ -118,7 +118,12 @@ export default function Home() {
           </div>
         </div>
         <div className="home-cta-actions">
-          <a className="btn btn-primary" href={GIVESENDGO_URL} target="_blank" rel="noopener noreferrer">
+          <a
+            className="btn btn-primary support-donate-button"
+            href={GIVESENDGO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Donate on GiveSendGo
           </a>
           <a

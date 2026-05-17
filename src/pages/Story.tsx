@@ -7,6 +7,7 @@ const storySources = {
     'https://www.wsmv.com/2026/05/15/controversial-streamer-dalton-eatherly-appears-before-judge-following-shooting-outside-clarksville-courthouse/',
   civilDocket:
     'https://montgomerytn.gov/storage/departments/circuit/docket/General%20Sessions-Civil/Poland%2005-13-26.pdf',
+  joshuaFoxBackground: 'https://x.com/Thefactsdude/status/2055233686618951825',
   judgeProfile:
     'https://www.tncourts.gov/courts/general-sessions-courts/judges/reid-poland',
   attorneyProfile: 'https://fendleylaw.com/about/jacob-w-fendley/',
@@ -199,8 +200,8 @@ export default function Story() {
               <li>A group of people can be seen laughing and pointing in his direction.</li>
               <li>
                 One man, later identified in court filings as{' '}
-                <SourceLink href={storySources.courtAppearance}>Joshua Fox</SourceLink>, tells him
-                to walk away, then approaches him saying, <em>"I have PTSD."</em>
+                <SourceLink href={storySources.joshuaFoxBackground}>Joshua Fox</SourceLink>, tells
+                him to walk away, then approaches him saying, <em>"I have PTSD."</em>
               </li>
               <li>
                 In Dalton's words:{' '}
