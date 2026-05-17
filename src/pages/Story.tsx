@@ -17,9 +17,15 @@ export default function Story() {
       const firstRect = items[0].getBoundingClientRect()
       const lastRect = items[items.length - 1].getBoundingClientRect()
       const scrollerRect = scrollContainer?.getBoundingClientRect()
+      const timelineStyles = getComputedStyle(root)
+      const dotOffset =
+        Number.parseFloat(timelineStyles.getPropertyValue('--dot-offset')) || 0
+      const dotSize =
+        Number.parseFloat(timelineStyles.getPropertyValue('--dot-size')) || 0
+      const dotRadius = dotSize / 2
 
-      const top = firstRect.top - containerRect.top + firstRect.height / 2
-      const bottom = lastRect.top - containerRect.top + lastRect.height / 2
+      const top = firstRect.top - containerRect.top + dotOffset + dotRadius
+      const bottom = lastRect.top - containerRect.top + dotOffset - dotRadius
       const lineHeight = Math.max(0, bottom - top)
       root.style.setProperty('--line-top', `${top}px`)
       root.style.setProperty('--line-height', `${lineHeight}px`)
@@ -28,9 +34,12 @@ export default function Story() {
       const scrollTop = scrollContainer ? scrollContainer.scrollTop : window.scrollY
       const viewportHeight = scrollContainer ? scrollContainer.clientHeight : window.innerHeight
       const scrollHeight = scrollContainer ? scrollContainer.scrollHeight : doc.scrollHeight
+      const viewportAnchor = scrollContainer && scrollerRect
+        ? scrollerRect.top + viewportHeight * 0.35
+        : viewportHeight * 0.35
       const firstCenterAbs = scrollContainer && scrollerRect
-        ? firstRect.top - scrollerRect.top + scrollContainer.scrollTop + firstRect.height / 2
-        : firstRect.top + firstRect.height / 2 + window.scrollY
+        ? firstRect.top - scrollerRect.top + scrollContainer.scrollTop + dotOffset
+        : firstRect.top + dotOffset + window.scrollY
       const halfVh = viewportHeight / 2
       const startScroll = firstCenterAbs - halfVh
       const endScroll = scrollHeight - viewportHeight
@@ -38,6 +47,21 @@ export default function Story() {
       const ratio =
         span > 0 ? Math.max(0, Math.min(1, (scrollTop - startScroll) / span)) : 0
       root.style.setProperty('--line-progress', `${lineHeight * ratio}px`)
+
+      const activeIndex = items.reduce((closestIndex, item, index) => {
+        const rect = item.getBoundingClientRect()
+        const dotCenter = rect.top + dotOffset
+        const closestRect = items[closestIndex].getBoundingClientRect()
+        const closestCenter = closestRect.top + dotOffset
+
+        return Math.abs(dotCenter - viewportAnchor) < Math.abs(closestCenter - viewportAnchor)
+          ? index
+          : closestIndex
+      }, 0)
+
+      items.forEach((item, index) => {
+        item.classList.toggle('is-active', index === activeIndex)
+      })
     }
     const schedule = () => {
       if (raf) return
@@ -62,40 +86,43 @@ export default function Story() {
   return (
     <article className="page">
       <section className="story-intro">
-        <h2 className="page-title">About Chud</h2>
+        <h2 className="page-title">What Happened</h2>
 
-        <aside className="story-aside">
-          <h3 className="fact-block-title">DAY 1 IN JAIL</h3>
-          <ul className="fact-block">
-            <li>Held on $1.25 million bond</li>
-            <li>First time facing felony charges</li>
-            <li>Drew his licensed firearm only after being physically attacked</li>
-            <li>Faces 15 to 60 years on the lead charge</li>
-          </ul>
+        <div className="story-intro-grid">
+          <img
+            className="story-intro-image"
+            src="/images/dalton-cowboy-hat.jfif"
+            alt="Dalton Eatherly in a cowboy hat"
+          />
 
-          <blockquote className="pull-quote">
-            <p>"I'm not paying if you are kicking me out."</p>
-            <footer>Dalton at Bob's Steak and Chop House, May 9</footer>
-          </blockquote>
-        </aside>
+          <div className="story-summary-column">
+            <p className="story-demeanor">
+              Dalton is known by supporters for keeping calm while recording
+              public encounters. Even when people get loud or hostile, he keeps
+              the camera rolling and documents what happens.
+            </p>
 
-        <p>
-          Dalton Eatherly, known online as ChudTheBuilder, has a rare combination. He has
-          the courage to speak up when people are breaking rules or behaving badly in
-          public, and the calm to stay composed while they get loud, hostile, or violent.
-        </p>
-        <p>
-          He has been physically assaulted on camera more than once for doing it. He keeps
-          the camera rolling, keeps his voice level, and lets the people attacking him show
-          the world who they are. Most people look the other way. Dalton does not.
-        </p>
-        <p>
-          What follows is what happened that week, step by step.
-        </p>
+            <blockquote className="pull-quote">
+              <p>"I'm not paying if you are kicking me out."</p>
+              <footer>Dalton at Bob's Steak and Chop House, May 9</footer>
+            </blockquote>
+          </div>
+
+          <aside className="story-aside">
+            <h3 className="fact-block-title">KEY FACTS</h3>
+            <ul className="fact-block">
+              <li>Self-defense - straight to jail</li>
+              <li>Held on $1.25 million bond</li>
+              <li>First time facing felony charges</li>
+              <li>Drew his licensed firearm only after being physically attacked</li>
+              <li>Faces 15 to 60 years on the lead charge</li>
+            </ul>
+          </aside>
+        </div>
       </section>
 
       <section className="story-events">
-        <h2 className="page-title">WHAT HAPPENED</h2>
+        <h2 className="page-title">EVENT SUMMARY</h2>
 
         <div className="timeline" ref={ref}>
         <section className="timeline-event">

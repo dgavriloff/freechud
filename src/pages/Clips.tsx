@@ -1,4 +1,3 @@
-import { useRef, useState } from 'react'
 import { clips, type Clip } from '../data/clips'
 
 export default function Clips() {
@@ -30,50 +29,22 @@ export default function Clips() {
 }
 
 function ClipCard({ clip }: { clip: Clip }) {
-  const localRef = useRef<HTMLVideoElement | null>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
-
   const embedSrc = clip.youtubeId
     ? `https://www.youtube.com/embed/${clip.youtubeId}`
     : clip.iframeUrl
 
-  const toggle = () => {
-    const v = localRef.current
-    if (!v) return
-    if (v.paused) {
-      void v.play()
-    } else {
-      v.pause()
-    }
-  }
-
   return (
     <div className="carousel-card">
       {clip.src ? (
-        <button
-          type="button"
-          className="carousel-card-media is-toggle"
-          onClick={toggle}
-          aria-label={isPlaying ? 'Pause video' : 'Play video'}
-        >
+        <div className="carousel-card-media">
           <video
-            ref={localRef}
             src={clip.src}
             poster={clip.poster}
-            loop
+            controls
             playsInline
             preload="metadata"
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
           />
-          {!isPlaying && (
-            <span className="hero-video-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="56" height="56">
-                <path d="M7 5 L19 12 L7 19 Z" fill="currentColor" />
-              </svg>
-            </span>
-          )}
-        </button>
+        </div>
       ) : embedSrc ? (
         <div className="carousel-card-media">
           <iframe

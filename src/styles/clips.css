@@ -45,18 +45,6 @@
   overflow: hidden;
 }
 
-.carousel-card-media.is-toggle {
-  padding: 0;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  font: inherit;
-  color: inherit;
-}
-
-.carousel-card-media.is-toggle video {
-  pointer-events: none;
-}
-
 .carousel-card-media iframe,
 .carousel-card-media video {
   position: absolute;

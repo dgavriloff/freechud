@@ -167,19 +167,46 @@
   line-height: 1.7;
 }
 
+.story-intro-grid {
+  display: grid;
+  grid-template-columns: 138px minmax(260px, 1fr) minmax(220px, 320px);
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.story-intro-image {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  object-fit: cover;
+}
+
 .story-aside {
-  float: right;
-  width: 360px;
-  max-width: 45%;
-  margin: 0 0 1.5rem 2rem;
+  width: 100%;
+  margin: 0;
+}
+
+.story-summary-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.story-demeanor {
+  margin: 0 0 1rem;
 }
 
 .story-aside .fact-block-title {
   margin-top: 0;
 }
 
-.story-aside .pull-quote {
-  margin: 1.25rem 0 0;
+.story-aside .fact-block {
+  margin-bottom: 0;
+}
+
+.story-summary-column .pull-quote {
+  margin: 1.5rem 0 0;
 }
 
 .story-intro p:last-child {
@@ -699,11 +726,12 @@
 
 
 @media (max-width: 720px) {
-  .story-aside {
-    float: none;
-    width: 100%;
-    max-width: 100%;
-    margin: 1.5rem 0;
+  .story-intro-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+  .story-intro-image {
+    display: none;
   }
   .support-donate-card,
   .support-milestones {

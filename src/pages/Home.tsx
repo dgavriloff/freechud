@@ -1,50 +1,23 @@
 import { Link } from 'react-router-dom'
-import { useRef, useState } from 'react'
 import { GIVESENDGO_URL } from '../constants'
+import { homeVideos } from '../data/homeVideos'
 
 export default function Home() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
-
-  const toggle = () => {
-    const v = videoRef.current
-    if (!v) return
-    if (v.paused) {
-      void v.play()
-    } else {
-      v.pause()
-    }
-  }
-
   return (
     <article className="home-page">
       <section className="hero-section">
         <h1 className="hero-heading">Meet Dalton Eatherly</h1>
 
         <div className="hero">
-          <button
-            type="button"
-            className={`hero-video${isPlaying ? ' is-playing' : ''}`}
-            onClick={toggle}
-            aria-label={isPlaying ? 'Pause video' : 'Play video'}
-          >
+          <figure className="hero-video-frame">
             <video
-              ref={videoRef}
+              className="hero-video-player"
               src="/clips/message.mp4"
-              loop
+              controls
               playsInline
               preload="metadata"
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
             />
-            {!isPlaying && (
-              <span className="hero-video-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="56" height="56">
-                  <path d="M7 5 L19 12 L7 19 Z" fill="currentColor" />
-                </svg>
-              </span>
-            )}
-          </button>
+          </figure>
 
           <aside className="hero-aside">
             <article className="hero-summary">
@@ -55,8 +28,8 @@ export default function Home() {
                 taking construction jobs to support himself and his family.
               </p>
               <p>
-                That changed after a public encounter he recorded while buying
-                household goods went viral. Dalton says the attention brought
+                That changed after a public encounter he recorded on his way
+                home from work went viral. Dalton says the attention brought
                 threats toward him and his family, cost him contracts, and
                 eventually pushed him out of regular construction work.
                 Streaming became how he documented his life and the
@@ -83,6 +56,34 @@ export default function Home() {
               </Link>
             </div>
           </aside>
+        </div>
+      </section>
+
+      <section className="home-section home-videos">
+        <div className="home-section-intro">
+          <p className="section-kicker">Dalton as ChudTheBuilder</p>
+          <h2 className="home-section-title">
+            Dalton livestreaming as ChudTheBuilder.
+          </h2>
+        </div>
+
+        <div className="home-video-grid">
+          {homeVideos.map((video) => (
+            <article className="home-video-card" key={video.id}>
+              <div className="home-video-media">
+                <video
+                  src={video.src}
+                  controls
+                  playsInline
+                  preload="metadata"
+                />
+              </div>
+              <div className="home-video-copy">
+                <h3>{video.title}</h3>
+                <p>{video.description}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
