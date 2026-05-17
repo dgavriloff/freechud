@@ -39,7 +39,7 @@
   width: 100%;
   max-width: 720px;
   aspect-ratio: 16 / 9;
-  background: #000;
+  background: #fff;
   border: 1px solid var(--wp-border);
   border-radius: 2px;
   overflow: hidden;
@@ -53,8 +53,13 @@
   height: 100%;
   border: 0;
   display: block;
-  background: #000;
+  background: #fff;
   object-fit: contain;
+}
+
+.carousel-card-media video {
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .carousel-card-title {

@@ -19,6 +19,9 @@ export default function Home() {
               onLoadedMetadata={(e) => {
                 e.currentTarget.currentTime = 0.001
               }}
+              onSeeked={(e) => {
+                e.currentTarget.classList.add('is-ready')
+              }}
             />
           </figure>
 
@@ -81,6 +84,9 @@ export default function Home() {
                   preload="metadata"
                   onLoadedMetadata={(e) => {
                     e.currentTarget.currentTime = 0.001
+                  }}
+                  onSeeked={(e) => {
+                    e.currentTarget.classList.add('is-ready')
                   }}
                 />
               </div>
