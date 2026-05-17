@@ -311,13 +311,14 @@
 }
 
 .bail-source-link {
-  border-bottom: 1px solid currentColor;
+  color: var(--wp-link);
+  border-bottom: none;
   text-decoration: none;
 }
 
 .bail-source-link:hover,
 .bail-source-link:focus {
-  color: var(--wp-link);
+  color: var(--wp-link-hover);
 }
 
 .bail-label span {

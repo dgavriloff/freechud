@@ -10,12 +10,13 @@ export default function WhyThisMatters() {
           Across the Western hemisphere there has been an increasing sentiment
           that law abiding citizens are being subjected to a "two tiered justice
           system". Law abiding citizens are seemingly punished at a higher rate
-          than repeat offenders, as evidenced recently by the Dayton Knapton case
+          than repeat offenders, as in the case of Dayton Knapton in Michigan,
+          who now faces manslaughter charges after defending his home in the
+          middle of the night against seven intruders
           <sup className="citation-mark">
             <a href="#source-knapton">*</a>
           </sup>
-          , where a homeowner is facing prison time after firing during an
-          alleged garage burglary.
+          .
         </p>
         <p>
           Dalton's case represents the fundamental ability to defend oneself
@@ -50,7 +51,13 @@ export default function WhyThisMatters() {
             <h3 className="home-section-title">
               "Excessive bail shall not be required"
               <span className="title-attribution">
-                Tennessee Constitution, Article I, Section 16
+                <a
+                  href="https://publications.tnsosfiles.com/pub/2023%20TN%20Constitution.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Tennessee Constitution, Article I, Section 16
+                </a>
               </span>
               <sup className="citation-mark">
                 <a href="#source-bail-chart">‡</a>

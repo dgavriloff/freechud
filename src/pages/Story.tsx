@@ -122,6 +122,12 @@ export default function Story() {
               public encounters. Even when people get loud or hostile, he keeps
               the camera rolling and documents what happens.
             </p>
+            <p className="story-demeanor">
+              Dalton was assaulted in front of the courthouse where after the
+              initial assault as he fought off his attacker his firearm was
+              discharged. These are a recollection of events from eye witnesses.
+              The full recounting of events will be presented by his attorney.
+            </p>
 
             <blockquote className="pull-quote">
               <p>"I'm not paying if you are kicking me out."</p>
