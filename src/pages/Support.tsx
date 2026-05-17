@@ -58,7 +58,6 @@ export default function Support() {
             alt="Dalton Eatherly"
           />
           <div className="support-donate-copy">
-            <p className="section-kicker">GiveSendGo</p>
             <h3>Help bring Dalton home.</h3>
             <p>
               The bond is $1.25 million. The lead charge carries 15 to 60 years.
@@ -149,11 +148,13 @@ export default function Support() {
             src="/images/free-chud-t-shirt.jpeg"
             alt="Free Chud t-shirt"
           />
-          <div>
+          <div className="support-merch-copy">
             <h3>Buy a shirt</h3>
             <p>
               You can also support the effort by buying a Free Chud t-shirt.
             </p>
+          </div>
+          <div className="support-merch-action">
             <a
               className="btn btn-secondary"
               href={TSHIRT_URL}
@@ -168,13 +169,14 @@ export default function Support() {
         <section className="support-section">
           <h3>Contact</h3>
           <p>
-            For updates, coordination, or questions about helping, reach out on{' '}
+            For updates, coordination, or questions about helping, reach out to
+            Tom on{' '}
             <a href={CONTACT_X_URL} target="_blank" rel="noopener noreferrer">
               X
             </a>{' '}
-            or email{' '}
+            who is in direct contact with Dalton or contact the{' '}
             <a href={`mailto:${CONTACT_EMAIL}`}>
-              {CONTACT_EMAIL}
+              WCAP
             </a>
             .
           </p>

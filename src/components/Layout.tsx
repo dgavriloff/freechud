@@ -9,7 +9,9 @@ export default function Layout() {
     <div className={`site${isHome ? ' site--home' : ''}`}>
       <header className="navbar">
         <Link to="/" className="navbar-brand">
-          <img src={CHUD_PHOTO_URL} alt="" className="navbar-logo" />
+          <span className="navbar-logo">
+            <img src={CHUD_PHOTO_URL} alt="" />
+          </span>
           <span className="navbar-name">FREE CHUD</span>
         </Link>
         <nav className="navbar-nav" aria-label="Primary">
