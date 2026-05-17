@@ -1,4 +1,24 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
+
+const storySources = {
+  courthouseInitial:
+    'https://www.wsmv.com/2026/05/13/social-media-personality-another-injured-after-fight-leads-shooting-outside-montgomery-county-courthouse/',
+  courtAppearance:
+    'https://www.wsmv.com/2026/05/15/controversial-streamer-dalton-eatherly-appears-before-judge-following-shooting-outside-clarksville-courthouse/',
+  civilDocket:
+    'https://montgomerytn.gov/storage/departments/circuit/docket/General%20Sessions-Civil/Poland%2005-13-26.pdf',
+  judgeProfile:
+    'https://www.tncourts.gov/courts/general-sessions-courts/judges/reid-poland',
+  attorneyProfile: 'https://fendleylaw.com/about/jacob-w-fendley/',
+}
+
+function SourceLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  )
+}
 
 export default function Story() {
   const ref = useRef<HTMLDivElement>(null)
@@ -128,12 +148,14 @@ export default function Story() {
         <section className="timeline-event">
           <h3 className="timeline-date">Saturday, May 9, Nashville</h3>
           <ul className="timeline-bullets">
-            <li>Chud is at Bob's Steak &amp; Chop House while livestreaming.</li>
+            <li>
+              Dalton is at Bob's Steak &amp; Chop House while livestreaming.
+            </li>
             <li>Staff tell him to stop streaming. He keeps going. Streaming is what he does.</li>
             <li>Restaurant moves to kick him out before he's eaten his food.</li>
             <li>They still want him to pay the $371.55 bill on the way out.</li>
             <li>
-              Chud refuses: <em>"I'm not paying if you are kicking me out."</em>
+              Dalton refuses: <em>"I'm not paying if you are kicking me out."</em>
             </li>
           </ul>
         </section>
@@ -160,28 +182,33 @@ export default function Story() {
             <p className="timeline-time">9:00 a.m.</p>
             <ul className="timeline-bullets">
               <li>
-                He has a civil hearing at Montgomery County Courthouse over an alleged $3,300 debt
-                brought by Midland Credit Management, a debt-buyer collection case.
+                He has a{' '}
+                <SourceLink href={storySources.civilDocket}>
+                  civil hearing at Montgomery County Courthouse
+                </SourceLink>{' '}
+                over an alleged $3,300 debt brought by Midland Credit Management, a debt-buyer
+                collection case.
               </li>
             </ul>
           </div>
 
           <div className="timeline-sub">
             <p className="timeline-time">~1:20 p.m.</p>
-            <p className="timeline-lede">Outside the courthouse, on Chud's own livestream:</p>
+            <p className="timeline-lede">Outside the courthouse, on Dalton's own livestream:</p>
             <ul className="timeline-bullets">
               <li>A group of people can be seen laughing and pointing in his direction.</li>
               <li>
-                One man, later identified in court filings as Joshua Fox, tells him to walk away,
-                then approaches him saying, <em>"I have PTSD."</em>
+                One man, later identified in court filings as{' '}
+                <SourceLink href={storySources.courtAppearance}>Joshua Fox</SourceLink>, tells him
+                to walk away, then approaches him saying, <em>"I have PTSD."</em>
               </li>
               <li>
-                In Chud's words:{' '}
+                In Dalton's words:{' '}
                 <em>
                   "He started whaling on me, even after I had to defend myself by shooting him."
                 </em>
               </li>
-              <li>Chud draws his firearm and fires. Both men are hit.</li>
+              <li>Dalton draws his firearm and fires. Both men are hit.</li>
             </ul>
             <p className="muted-note">
               Exactly who initiated physical contact is disputed and is a matter
@@ -193,8 +220,11 @@ export default function Story() {
             <p className="timeline-time">Shortly after</p>
             <ul className="timeline-bullets">
               <li>
-                Sheriff's deputies and Clarksville PD arrive. Both men are transported to hospitals
-                in stable condition. Chud continues livestreaming from the gurney.
+                Sheriff's deputies and Clarksville PD arrive.{' '}
+                <SourceLink href={storySources.courthouseInitial}>
+                  Both men are transported to hospitals in stable condition
+                </SourceLink>
+                . Dalton continues livestreaming from the gurney.
               </li>
             </ul>
           </div>
@@ -203,20 +233,34 @@ export default function Story() {
         <section className="timeline-event">
           <h3 className="timeline-date">Friday, May 15, Arraignment</h3>
           <ul className="timeline-bullets">
-            <li>Chud appears in court from the hospital.</li>
+            <li>Dalton appears in court from the hospital.</li>
             <li>
-              The state stacks the charges: attempted criminal homicide, employing a firearm during
-              a dangerous felony, aggravated assault, and reckless endangerment.
+              The state stacks the charges:{' '}
+              <SourceLink href={storySources.courtAppearance}>
+                attempted criminal homicide, employing a firearm during a dangerous felony,
+                aggravated assault, and reckless endangerment
+              </SourceLink>
+              .
             </li>
             <li>
-              Judge Reid Poland III sets bond at <strong>$1.25 million</strong>, a bond that's
-              effectively impossible for an ordinary person to post.
+              <SourceLink href={storySources.judgeProfile}>Judge Reid Poland III</SourceLink>{' '}
+              sets bond at{' '}
+              <SourceLink href={storySources.courtAppearance}>
+                <strong>$1.25 million</strong>
+              </SourceLink>
+              , a bond that's effectively impossible for an ordinary person to post.
             </li>
             <li>Attempted criminal homicide carries 15 to 60 years in Tennessee.</li>
-            <li>Chud closes his eyes when the bond is read out.</li>
+            <li>Dalton closes his eyes when the bond is read out.</li>
             <li>
-              Preliminary hearing set for <strong>May 26</strong>. Jake Fendley appointed as his
-              attorney.
+              <SourceLink href={storySources.courtAppearance}>
+                Preliminary hearing set for <strong>May 26</strong>
+              </SourceLink>
+              .{' '}
+              <SourceLink href={storySources.attorneyProfile}>
+                Jake Fendley appointed as his attorney
+              </SourceLink>
+              .
             </li>
           </ul>
         </section>
