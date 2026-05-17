@@ -46,9 +46,6 @@ function ClipCard({ clip }: { clip: Clip }) {
             onLoadedMetadata={(e) => {
               e.currentTarget.currentTime = 0.001
             }}
-            onSeeked={(e) => {
-              e.currentTarget.classList.add('is-ready')
-            }}
           />
         </div>
       ) : embedSrc ? (
