@@ -1,13 +1,8 @@
-import { Link } from 'react-router-dom'
 import BailComparisonChart from '../components/BailComparisonChart'
 
 export default function WhyThisMatters() {
   return (
     <article className="page">
-      <p className="page-back">
-        <Link to="/">&larr; Back</Link>
-      </p>
-
       <h2 className="page-title">WHY THIS MATTERS</h2>
       <div className="page-content">
         <h3>Why is freeing Dalton important?</h3>

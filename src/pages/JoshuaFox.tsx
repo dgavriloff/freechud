@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom'
 export default function JoshuaFox() {
   return (
     <article className="page">
-      <p className="page-back">
-        <Link to="/">&larr; Back</Link>
-      </p>
-
       <section className="story-intro">
         <h2 className="page-title">Joshua Fox</h2>
 

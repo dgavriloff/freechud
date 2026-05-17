@@ -19,7 +19,7 @@ body {
   overflow: hidden;
   background: var(--wp-bg);
   color: var(--wp-text);
-  font-family: var(--wp-serif);
+  font-family: var(--wp-body);
   font-size: 1rem;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -40,7 +40,7 @@ a:focus {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--wp-serif);
+  font-family: var(--wp-display);
   font-weight: 700;
   line-height: 1.25;
   margin: 1.5em 0 0.5em;

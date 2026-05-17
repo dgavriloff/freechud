@@ -1,12 +1,6 @@
-import { Link } from 'react-router-dom'
-
 export default function Evidence() {
   return (
     <article className="page">
-      <p className="page-back">
-        <Link to="/">&larr; Back</Link>
-      </p>
-
       <h2 className="page-title">EVIDENCE</h2>
       <div className="page-content">
         <p>

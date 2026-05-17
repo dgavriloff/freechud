@@ -124,23 +124,6 @@
   max-width: 100%;
 }
 
-.page-back {
-  margin: 0 0 1.5rem;
-  font-family: var(--wp-sans);
-  font-size: 0.8125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.page-back a {
-  color: var(--wp-muted);
-  border-bottom: none;
-}
-
-.page-back a:hover {
-  color: var(--wp-link);
-}
-
 .page-title {
   margin: 0 0 1.5rem;
   font-size: 2.25rem;
@@ -253,6 +236,207 @@
   margin-bottom: 2rem;
 }
 
+.support-donate-card {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) minmax(260px, 0.7fr);
+  gap: 1.5rem;
+  align-items: stretch;
+  margin: 0 0 2rem;
+  padding: 1.5rem;
+  border: 2px solid var(--wp-accent);
+  border-radius: 2px;
+  background: #f7f7f7;
+}
+
+.support-donate-copy h3 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.support-donate-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.support-donate-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  object-fit: cover;
+  object-position: center top;
+  background: #fff;
+}
+
+.support-donate-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  background: var(--wp-bg);
+}
+
+.support-raised-label {
+  margin: 0;
+  color: var(--wp-muted);
+  font-family: var(--wp-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.support-raised-amount {
+  display: block;
+  color: var(--wp-accent);
+  font-family: var(--wp-sans);
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.support-donate-button {
+  width: 100%;
+}
+
+.support-givesendgo-logo-link {
+  display: flex;
+  justify-content: center;
+  border-bottom: none;
+}
+
+.support-givesendgo-logo-link:hover,
+.support-givesendgo-logo-link:focus {
+  border-bottom: none;
+}
+
+.support-givesendgo-logo {
+  display: block;
+  width: 120px;
+  max-width: 60%;
+  height: auto;
+}
+
+.support-donate-panel .muted-note {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.support-section {
+  margin: 0 0 2rem;
+}
+
+.support-section:last-child {
+  margin-bottom: 0;
+}
+
+.support-section h3 {
+  margin-top: 0;
+}
+
+.support-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+}
+
+.support-milestones {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.support-milestone {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  background: var(--wp-bg);
+  color: var(--wp-text);
+  text-decoration: none;
+}
+
+.support-milestone:hover,
+.support-milestone:focus {
+  color: var(--wp-text);
+  border-color: var(--wp-accent);
+}
+
+.support-milestone:focus-visible {
+  outline: 2px solid var(--wp-link);
+  outline-offset: 2px;
+}
+
+.support-milestone-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.support-milestone-header span {
+  color: var(--wp-muted);
+  font-family: var(--wp-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.support-milestone-header strong {
+  color: var(--wp-accent);
+  font-family: var(--wp-sans);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.support-meter {
+  height: 0.625rem;
+  overflow: hidden;
+  background: #e5e5e5;
+  border-radius: 999px;
+}
+
+.support-meter span {
+  display: block;
+  height: 100%;
+  background: var(--wp-accent);
+}
+
+.support-milestone p {
+  margin: 0;
+  color: var(--wp-muted);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.support-merch {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.25rem;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  background: #f7f7f7;
+}
+
+.support-merch-image {
+  display: block;
+  width: 160px;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  object-fit: cover;
+  background: #fff;
+}
+
 /* Buttons */
 
 .btn {
@@ -326,6 +510,79 @@
   color: #fff;
 }
 
+.support-donate-button {
+  background: var(--wp-support);
+  border-color: var(--wp-support);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow: 0 6px 14px rgba(17, 143, 145, 0.14);
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.support-donate-button::before {
+  content: "";
+  position: absolute;
+  inset: -40% auto -40% -55%;
+  z-index: -1;
+  width: 45%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.42),
+    transparent
+  );
+  transform: skewX(-18deg) translateX(0);
+  transition: transform 0.45s ease;
+}
+
+@media (hover: hover) {
+  .support-donate-button.btn-primary:hover {
+    background: var(--wp-support-hover);
+    border-color: var(--wp-support-hover);
+    box-shadow: 0 10px 18px rgba(17, 143, 145, 0.18);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .support-donate-button:hover::before {
+    transform: skewX(-18deg) translateX(360%);
+  }
+}
+
+.support-donate-button.btn-primary:focus-visible {
+  background: var(--wp-support-hover);
+  border-color: var(--wp-support-hover);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.9),
+    0 0 0 6px rgba(17, 143, 145, 0.36),
+    0 10px 18px rgba(17, 143, 145, 0.18);
+  color: #fff;
+}
+
+.support-donate-button.btn-primary:active {
+  background: var(--wp-support-active);
+  border-color: var(--wp-support-active);
+  box-shadow:
+    inset 0 3px 8px rgba(0, 0, 0, 0.22),
+    0 3px 8px rgba(17, 143, 145, 0.12);
+  color: #fff;
+  transform: translateY(1px) scale(0.985);
+  transition-duration: 0.08s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .support-donate-button,
+  .support-donate-button::before {
+    transition: none;
+  }
+}
+
 /* Remove iOS tap highlight */
 .btn {
   -webkit-tap-highlight-color: transparent;
@@ -369,6 +626,16 @@
     max-width: 100%;
     margin: 1.5rem 0;
   }
+  .support-donate-card,
+  .support-milestones {
+    grid-template-columns: 1fr;
+  }
+  .support-donate-image {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    min-height: 0;
+  }
 }
 
 @media (max-width: 600px) {
@@ -395,5 +662,19 @@
   .site-footer {
     padding: 0.625rem 1rem;
     font-size: 0.75rem;
+  }
+  .support-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .support-donate-image {
+    max-height: 260px;
+  }
+  .support-merch {
+    grid-template-columns: 1fr;
+  }
+  .support-merch-image {
+    width: 100%;
+    max-width: 220px;
   }
 }

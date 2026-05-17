@@ -1,14 +1,9 @@
-import { Link } from 'react-router-dom'
 import { useRef, useState } from 'react'
 import { clips, type Clip } from '../data/clips'
 
 export default function Clips() {
   return (
     <article className="page">
-      <p className="page-back">
-        <Link to="/">&larr; Back</Link>
-      </p>
-
       <section className="story-intro">
         <h2 className="page-title">Isn't he a racist?</h2>
         <p>

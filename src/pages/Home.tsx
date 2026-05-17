@@ -18,66 +18,72 @@ export default function Home() {
 
   return (
     <article className="home-page">
-      <section className="hero">
-        <button
-          type="button"
-          className={`hero-video${isPlaying ? ' is-playing' : ''}`}
-          onClick={toggle}
-          aria-label={isPlaying ? 'Pause video' : 'Play video'}
-        >
-          <video
-            ref={videoRef}
-            src="/clips/message.mp4"
-            loop
-            playsInline
-            preload="metadata"
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-          />
-          {!isPlaying && (
-            <span className="hero-video-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="56" height="56">
-                <path d="M7 5 L19 12 L7 19 Z" fill="currentColor" />
-              </svg>
-            </span>
-          )}
-        </button>
+      <section className="hero-section">
+        <h1 className="hero-heading">Meet Dalton Eatherly</h1>
 
-        <aside className="hero-aside">
-          <article className="hero-summary">
-            <h1 className="hero-summary-title">Who is ChudTheBuilder?</h1>
-            <p>
-              Dalton Eatherly, known online as ChudTheBuilder, is a father and
-              former construction worker from Tennessee. Before streaming became
-              his full-time work, he was living an ordinary life and taking
-              construction jobs to support himself and his family.
-            </p>
-            <p>
-              That changed after a public encounter he recorded while buying
-              household goods went viral. Dalton says the attention brought
-              threats toward him and his family, cost him contracts, and
-              eventually pushed him out of regular construction work. Streaming
-              became how he documented his life and the confrontations that
-              followed.
-            </p>
-            <p>
-              Dalton is now jailed after a disputed courthouse encounter. He
-              says he acted in self-defense; prosecutors charged him with
-              attempted criminal homicide and his bond was set at $1.25 million.
-              This site collects the timeline, evidence, and supporter argument
-              for bringing him home.
-            </p>
-          </article>
+        <div className="hero">
+          <button
+            type="button"
+            className={`hero-video${isPlaying ? ' is-playing' : ''}`}
+            onClick={toggle}
+            aria-label={isPlaying ? 'Pause video' : 'Play video'}
+          >
+            <video
+              ref={videoRef}
+              src="/clips/message.mp4"
+              loop
+              playsInline
+              preload="metadata"
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+            />
+            {!isPlaying && (
+              <span className="hero-video-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="56" height="56">
+                  <path d="M7 5 L19 12 L7 19 Z" fill="currentColor" />
+                </svg>
+              </span>
+            )}
+          </button>
 
-          <div className="hero-actions">
-            <Link className="btn btn-primary" to="/story">
-              Read the timeline
-            </Link>
-            <Link className="btn btn-secondary" to="/why-this-matters">
-              Why this matters
-            </Link>
-          </div>
-        </aside>
+          <aside className="hero-aside">
+            <article className="hero-summary">
+              <p>
+                Dalton Eatherly, known online as ChudTheBuilder, is a father
+                and former construction worker from Tennessee. Before streaming
+                became his full-time work, he was living an ordinary life and
+                taking construction jobs to support himself and his family.
+              </p>
+              <p>
+                That changed after a public encounter he recorded while buying
+                household goods went viral. Dalton says the attention brought
+                threats toward him and his family, cost him contracts, and
+                eventually pushed him out of regular construction work.
+                Streaming became how he documented his life and the
+                confrontations that followed.
+              </p>
+              <p>
+                Following the evening where his stalkers found and killed his
+                dog, Dalton is now jailed after a disputed courthouse encounter.
+                Acting in self-defense; prosecutors charged him with attempted
+                criminal homicide and his bond was set at $1.25 million.
+              </p>
+              <p>
+                This site collects the timeline, evidence, and supporter
+                argument for bringing him home.
+              </p>
+            </article>
+
+            <div className="hero-actions">
+              <Link className="btn btn-primary" to="/story">
+                Read the timeline
+              </Link>
+              <Link className="btn btn-secondary" to="/why-this-matters">
+                Why this matters
+              </Link>
+            </div>
+          </aside>
+        </div>
       </section>
 
       <section className="home-section">
@@ -99,9 +105,16 @@ export default function Home() {
       </section>
 
       <section className="home-cta">
-        <div>
-          <p className="section-kicker">What you can do</p>
-          <h2 className="home-section-title">Help bring Dalton home.</h2>
+        <div className="home-cta-intro">
+          <img
+            className="home-cta-image"
+            src="/images/dalton-dog-field.jpg"
+            alt="Dalton playing with his dog in a field"
+          />
+          <div>
+            <p className="section-kicker">What you can do</p>
+            <h2 className="home-section-title">Help bring Dalton home.</h2>
+          </div>
         </div>
         <div className="home-cta-actions">
           <a className="btn btn-primary" href={GIVESENDGO_URL} target="_blank" rel="noopener noreferrer">
