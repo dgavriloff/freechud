@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <article className="home-page">
       <section className="hero-section">
-        <h1 className="hero-heading">Meet Dalton Eatherly</h1>
+        <h1 className="page-title">MEET DALTON EATHERLY</h1>
 
         <div className="hero">
           <figure className="hero-video-frame">

@@ -17,12 +17,6 @@
   width: 100%;
 }
 
-.hero-heading {
-  margin: 0 0 1.5rem;
-  font-size: 2.25rem;
-  letter-spacing: 0.01em;
-}
-
 .hero {
   display: flex;
   flex-direction: row;
@@ -131,6 +125,11 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.section-kicker.section-kicker--large {
+  font-size: 1.25rem;
+  line-height: 1.6;
 }
 
 .home-section-title {
@@ -265,6 +264,15 @@
 
 .bail-chart-note--below {
   margin-top: 0.75rem;
+}
+
+.page-content .bail-chart-note--below {
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.bail-chart-title {
+  font-size: 1.6rem;
 }
 
 .title-attribution {
@@ -444,11 +452,6 @@
     flex-direction: column;
     align-items: center;
     gap: 1.25rem;
-  }
-
-  .hero-heading {
-    margin-bottom: 1rem;
-    font-size: 1.625rem;
   }
 
   .hero-video-frame {

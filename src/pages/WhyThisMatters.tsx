@@ -5,7 +5,9 @@ export default function WhyThisMatters() {
     <article className="page">
       <h2 className="page-title">WHY THIS MATTERS</h2>
       <div className="page-content">
-        <h3>Why is freeing Dalton important?</h3>
+        <h3 className="section-kicker section-kicker--large">
+          Why is freeing Dalton important?
+        </h3>
         <p>
           Across the Western hemisphere there has been an increasing sentiment
           that law abiding citizens are being subjected to a "two tiered justice
@@ -47,8 +49,10 @@ export default function WhyThisMatters() {
 
         <div className="bail-chart-header">
           <div>
-            <p className="section-kicker">Initial bond comparison</p>
-            <h3 className="home-section-title">
+            <p className="section-kicker section-kicker--large">
+              Initial bond comparison
+            </p>
+            <h3 className="home-section-title bail-chart-title">
               "Excessive bail shall not be required"
               <span className="title-attribution">
                 <a

@@ -7,7 +7,6 @@ const storySources = {
     'https://www.wsmv.com/2026/05/15/controversial-streamer-dalton-eatherly-appears-before-judge-following-shooting-outside-clarksville-courthouse/',
   civilDocket:
     'https://montgomerytn.gov/storage/departments/circuit/docket/General%20Sessions-Civil/Poland%2005-13-26.pdf',
-  joshuaFoxBackground: 'https://x.com/Thefactsdude/status/2055233686618951825',
   judgeProfile:
     'https://www.tncourts.gov/courts/general-sessions-courts/judges/reid-poland',
   attorneyProfile: 'https://fendleylaw.com/about/jacob-w-fendley/',
@@ -107,7 +106,7 @@ export default function Story() {
   return (
     <article className="page">
       <section className="story-intro">
-        <h2 className="page-title">What Happened</h2>
+        <h2 className="page-title">WHAT HAPPENED</h2>
 
         <div className="story-intro-grid">
           <img
@@ -149,7 +148,9 @@ export default function Story() {
       </section>
 
       <section className="story-events">
-        <h2 className="page-title">EVENT SUMMARY</h2>
+        <p className="section-kicker section-kicker--large story-section-title">
+          Event summary
+        </p>
 
         <div className="timeline" ref={ref}>
         <section className="timeline-event">
@@ -205,8 +206,7 @@ export default function Story() {
             <ul className="timeline-bullets">
               <li>A group of people can be seen laughing and pointing in his direction.</li>
               <li>
-                One man, later identified in court filings as{' '}
-                <SourceLink href={storySources.joshuaFoxBackground}>Joshua Fox</SourceLink>, tells
+                One man, later identified in court filings as Joshua Fox, tells
                 him to walk away, then approaches him saying, <em>"I have PTSD."</em>
               </li>
               <li>
