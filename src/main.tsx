@@ -11,11 +11,3 @@ createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </StrictMode>,
 )
-
-const reveal = () => document.documentElement.classList.add('is-ready')
-if (document.readyState === 'complete') {
-  reveal()
-} else {
-  window.addEventListener('load', reveal, { once: true })
-  window.setTimeout(reveal, 2000)
-}
