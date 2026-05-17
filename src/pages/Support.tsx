@@ -5,46 +5,7 @@ import {
   PUMPFUN_URL,
   TSHIRT_URL,
 } from '../constants'
-
-const fundingStats = {
-  raised: 233590.68,
-  bondPosting: 125000,
-  legalDefenseTarget: 300000,
-  legalDefenseRaised: 25000,
-}
-
-const totalWorkingNeed = fundingStats.bondPosting + fundingStats.legalDefenseTarget
-
-const formatCurrency = (amount: number) =>
-  new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: amount % 1 === 0 ? 0 : 2,
-  }).format(amount)
-
-const milestones = [
-  {
-    label: 'Total raised on GiveSendGo',
-    amount: fundingStats.raised,
-    displayAmount: formatCurrency(fundingStats.raised),
-    target: totalWorkingNeed,
-    note: 'Last update May 17, 2026.',
-  },
-  {
-    label: 'Estimated to post bond',
-    amount: fundingStats.bondPosting,
-    displayAmount: formatCurrency(fundingStats.bondPosting),
-    target: fundingStats.bondPosting,
-    note: '10% of the $1.25 million bond.',
-  },
-  {
-    label: 'Working legal-defense target',
-    amount: fundingStats.legalDefenseRaised,
-    displayAmount: formatCurrency(fundingStats.legalDefenseTarget),
-    target: fundingStats.legalDefenseTarget,
-    note: 'Initial attorney-fee estimate.',
-  },
-]
+import { formatCurrency, fundingMilestones, fundingStats } from '../data/funding'
 
 export default function Support() {
   return (
@@ -102,7 +63,7 @@ export default function Support() {
         <section className="support-section">
           <h3>Funding milestones</h3>
           <div className="support-milestones">
-            {milestones.map((milestone) => {
+            {fundingMilestones.map((milestone) => {
               const progress = Math.min(100, (milestone.amount / milestone.target) * 100)
 
               return (
