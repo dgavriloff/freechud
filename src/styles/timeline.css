@@ -1,9 +1,12 @@
 /* Timeline */
 
 .timeline {
-  --spine-x: 1.25rem;
-  --dot-size: 14px;
-  --dot-offset: 14px;
+  --timeline-spine-x: 1.25rem;
+  --timeline-dot-size: 14px;
+  --timeline-dot-offset: 14px;
+  --timeline-line-top: 0px;
+  --timeline-line-height: 0px;
+  --timeline-line-progress: 0px;
   position: relative;
   margin: 2rem 0 1rem;
   padding-left: 2.5rem;
@@ -13,20 +16,20 @@
 .timeline::after {
   content: '';
   position: absolute;
-  left: var(--spine-x);
+  left: var(--timeline-spine-x);
   width: 2px;
   margin-left: -1px;
-  top: var(--line-top, 0px);
+  top: var(--timeline-line-top);
   pointer-events: none;
 }
 
 .timeline::before {
-  height: var(--line-height, 0px);
-  background: #b5b5b5;
+  height: var(--timeline-line-height);
+  background: var(--wp-timeline-muted);
 }
 
 .timeline::after {
-  height: var(--line-progress, 0px);
+  height: var(--timeline-line-progress);
   background: var(--wp-accent);
 }
 
@@ -42,12 +45,12 @@
 .timeline-event::before {
   content: '';
   position: absolute;
-  left: calc(var(--spine-x) - 2.5rem);
-  top: var(--dot-offset);
-  width: var(--dot-size);
-  height: var(--dot-size);
-  margin-left: calc(var(--dot-size) / -2);
-  margin-top: calc(var(--dot-size) / -2);
+  left: calc(var(--timeline-spine-x) - 2.5rem);
+  top: var(--timeline-dot-offset);
+  width: var(--timeline-dot-size);
+  height: var(--timeline-dot-size);
+  margin-left: calc(var(--timeline-dot-size) / -2);
+  margin-top: calc(var(--timeline-dot-size) / -2);
   border-radius: 50%;
   background: var(--wp-accent);
   z-index: 1;
@@ -100,13 +103,13 @@
 
 @media (max-width: 600px) {
   .timeline {
-    --spine-x: 0.5rem;
-    --dot-size: 10px;
-    --dot-offset: 12px;
+    --timeline-spine-x: 0.5rem;
+    --timeline-dot-size: 10px;
+    --timeline-dot-offset: 12px;
     padding-left: 1.5rem;
   }
   .timeline-event::before {
-    left: calc(var(--spine-x) - 1.5rem);
+    left: calc(var(--timeline-spine-x) - 1.5rem);
   }
   .timeline-date {
     font-size: 1.125rem;

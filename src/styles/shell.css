@@ -1,0 +1,185 @@
+  /* Site shell */
+
+  .site {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--wp-border);
+    background: var(--wp-bg);
+    flex: 0 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--wp-accent);
+    border-bottom: none;
+    text-decoration: none;
+  }
+
+  .navbar-brand:hover {
+    color: var(--wp-link);
+    border-bottom: none;
+  }
+
+  .navbar-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--wp-border);
+    display: block;
+    background: var(--wp-surface);
+  }
+
+  .navbar-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .navbar-name {
+    font-family: var(--wp-sans);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    font-family: var(--wp-sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .navbar-nav a {
+    color: var(--wp-accent);
+    border-bottom: none;
+  }
+
+  .navbar-nav a:hover {
+    color: var(--wp-link);
+  }
+
+  .navbar-nav a.active {
+    border-bottom: 2px solid var(--wp-accent);
+  }
+
+  .site-scroll {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    scrollbar-color: var(--wp-scrollbar) transparent;
+    scrollbar-width: thin;
+    -ms-overflow-style: none;
+  }
+
+  .site-scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 0;
+  }
+
+  .site-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .site-scroll::-webkit-scrollbar-thumb {
+    background: var(--wp-scrollbar);
+    border: 3px solid var(--wp-bg);
+    border-radius: 999px;
+  }
+
+  .site-content {
+    flex: 1 0 auto;
+    max-width: var(--wp-content-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--wp-border);
+    padding: 0.625rem 1.5rem;
+    text-align: center;
+    color: var(--wp-muted);
+    font-size: 0.8125rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    box-sizing: border-box;
+  }
+
+  .site-footer-disclaimer {
+    max-width: none;
+    line-height: 1.35;
+  }
+
+  .site-footer p {
+    margin: 0;
+  }
+
+  .site-footer a {
+    color: var(--wp-muted);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    .navbar {
+      padding: 0.5rem 1rem;
+      gap: 0.625rem;
+    }
+
+    .navbar-logo {
+      width: 32px;
+      height: 32px;
+    }
+
+    .navbar-name {
+      font-size: 1.0625rem;
+    }
+
+    .navbar-nav {
+      width: 100%;
+      justify-content: flex-start;
+      gap: 0.5rem 0.875rem;
+      font-size: 0.8125rem;
+    }
+
+    .site-content {
+      padding: 1.5rem 1rem;
+    }
+
+    .site-footer {
+      padding: 0.625rem 1rem;
+      font-size: 0.75rem;
+    }
+  }

@@ -1,13 +1,16 @@
+import ExternalLink from '../components/ExternalLink'
 import BailComparisonChart from '../components/BailComparisonChart'
+import { Page, PageContent, PageTitle } from '../components/Page'
+import { SectionTitle } from '../components/SectionHeading'
 
 export default function WhyThisMatters() {
   return (
-    <article className="page">
-      <h2 className="page-title">WHY THIS MATTERS</h2>
-      <div className="page-content">
-        <h3 className="section-kicker section-kicker--large">
+    <Page>
+      <PageTitle>WHY THIS MATTERS</PageTitle>
+      <PageContent>
+        <SectionTitle>
           Why is freeing Dalton important?
-        </h3>
+        </SectionTitle>
         <p>
           Across the Western hemisphere there has been an increasing sentiment
           that law abiding citizens are being subjected to a "two tiered justice
@@ -47,21 +50,19 @@ export default function WhyThisMatters() {
           Dalton's bail bond compared to career criminals:
         </p>
 
-        <div className="bail-chart-header">
+        <div className="why-bail-chart-header">
           <div>
-            <p className="section-kicker section-kicker--large">
+            <SectionTitle>
               Initial bond comparison
-            </p>
-            <h3 className="home-section-title bail-chart-title">
+            </SectionTitle>
+            <h3 className="why-bail-chart-title">
               "Excessive bail shall not be required"
               <span className="title-attribution">
-                <a
+                <ExternalLink
                   href="https://publications.tnsosfiles.com/pub/2023%20TN%20Constitution.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   Tennessee Constitution, Article I, Section 16
-                </a>
+                </ExternalLink>
               </span>
               <sup className="citation-mark">
                 <a href="#source-bail-chart">‡</a>
@@ -74,13 +75,11 @@ export default function WhyThisMatters() {
 
         <p className="bail-chart-note bail-chart-note--below">
           Based on a supporter chart posted by{' '}
-          <a
+          <ExternalLink
             href="https://x.com/ArchetypeTheory/status/2055874788812333127"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             ArchetypeTheory
-          </a>{' '}
+          </ExternalLink>{' '}
           using Montgomery County public court-record research.
         </p>
 
@@ -90,33 +89,27 @@ export default function WhyThisMatters() {
             <li id="source-knapton">
               <span className="source-marker">*</span>
               <strong>Dayton Knapton case:</strong> Sources:{' '}
-              <a
+              <ExternalLink
                 href="https://www.fox2detroit.com/news/oakland-county-man-charged-deadly-shooting-teen-burglar-appear-court"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 FOX 2 Detroit
-              </a>
+              </ExternalLink>
               ,{' '}
-              <a
+              <ExternalLink
                 href="https://www.clickondetroit.com/news/local/2026/03/31/oakland-county-garage-burglar-sentenced-homeowner-to-appear-in-court-next-month/"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 ClickOnDetroit
-              </a>
+              </ExternalLink>
               .
             </li>
             <li id="source-bail-chart">
               <span className="source-marker">‡</span>
               <strong>Bail comparison chart:</strong> chart source is{' '}
-              <a
+              <ExternalLink
                 href="https://x.com/ArchetypeTheory/status/2055874788812333127"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 ArchetypeTheory on X
-              </a>
+              </ExternalLink>
               . The comparison is based on 8 years of Montgomery County public
               court records, with more than 10,000 criminal cases investigated,
               related news articles reviewed, and findings cross-referenced
@@ -124,7 +117,7 @@ export default function WhyThisMatters() {
             </li>
           </ol>
         </section>
-      </div>
-    </article>
+      </PageContent>
+    </Page>
   )
 }

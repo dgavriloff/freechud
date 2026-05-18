@@ -1,3 +1,4 @@
+import ExternalLink from './ExternalLink'
 import { bailComparisons } from '../data/bailComparisons'
 
 const maxBail = Math.max(...bailComparisons.map((item) => item.amount))
@@ -20,14 +21,12 @@ export default function BailComparisonChart() {
         >
           <div className="bail-label">
             {item.sourceUrl ? (
-              <a
+              <ExternalLink
                 className="bail-source-link"
                 href={item.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 {item.label}
-              </a>
+              </ExternalLink>
             ) : (
               <strong>{item.label}</strong>
             )}

@@ -1,0 +1,135 @@
+/* Story page */
+
+.story-intro {
+  margin: 0 0 3.5rem;
+}
+
+.story-intro::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.story-intro p {
+  margin: 0 0 1.25rem;
+  line-height: 1.7;
+}
+
+.story-intro-grid {
+  display: grid;
+  grid-template-columns: 138px minmax(260px, 1fr) minmax(220px, 320px);
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.story-intro-image {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.story-aside {
+  width: 100%;
+  margin: 0;
+}
+
+.story-summary-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.story-demeanor {
+  margin: 0 0 1rem;
+}
+
+.story-aside .fact-block-title {
+  margin-top: 0;
+}
+
+.story-aside .fact-block {
+  margin-bottom: 0;
+}
+
+.story-summary-column .pull-quote {
+  margin: 1.5rem 0 0;
+}
+
+.story-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.fact-block-title {
+  margin: 2rem 0 0.75rem;
+  font-family: var(--wp-sans);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  color: var(--wp-accent);
+}
+
+.fact-block {
+  list-style: none;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1.5rem;
+  border: 1px solid var(--wp-border);
+  border-radius: 2px;
+  background: var(--wp-bg);
+}
+
+.fact-block li {
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  padding: 0.25rem 0;
+  border-bottom: 1px dashed var(--wp-border);
+}
+
+.fact-block li:last-child {
+  border-bottom: none;
+}
+
+.pull-quote {
+  margin: 1.5rem 0;
+  padding: 0.5rem 0 0.5rem 1rem;
+  border-left: 3px solid var(--wp-accent);
+  font-style: italic;
+}
+
+.pull-quote p {
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.pull-quote footer {
+  font-style: normal;
+  font-family: var(--wp-sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--wp-muted);
+}
+
+.story-events {
+  margin-top: 3.5rem;
+}
+
+.story-events .story-section-title {
+  margin-bottom: 2rem;
+}
+
+.story-events .page-title {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 720px) {
+  .story-intro-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+
+  .story-intro-image {
+    display: none;
+  }
+}

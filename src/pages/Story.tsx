@@ -1,4 +1,7 @@
-import { useEffect, useRef, type ReactNode } from 'react'
+import { useEffect, useRef } from 'react'
+import ExternalLink from '../components/ExternalLink'
+import { Page, PageTitle } from '../components/Page'
+import { SectionTitle } from '../components/SectionHeading'
 
 const storySources = {
   courthouseInitial:
@@ -10,14 +13,6 @@ const storySources = {
   judgeProfile:
     'https://www.tncourts.gov/courts/general-sessions-courts/judges/reid-poland',
   attorneyProfile: 'https://fendleylaw.com/about/jacob-w-fendley/',
-}
-
-function SourceLink({ href, children }: { href: string; children: ReactNode }) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
-  )
 }
 
 export default function Story() {
@@ -39,16 +34,20 @@ export default function Story() {
       const scrollerRect = scrollContainer?.getBoundingClientRect()
       const timelineStyles = getComputedStyle(root)
       const dotOffset =
-        Number.parseFloat(timelineStyles.getPropertyValue('--dot-offset')) || 0
+        Number.parseFloat(
+          timelineStyles.getPropertyValue('--timeline-dot-offset'),
+        ) || 0
       const dotSize =
-        Number.parseFloat(timelineStyles.getPropertyValue('--dot-size')) || 0
+        Number.parseFloat(
+          timelineStyles.getPropertyValue('--timeline-dot-size'),
+        ) || 0
       const dotRadius = dotSize / 2
 
       const top = firstRect.top - containerRect.top + dotOffset + dotRadius
       const bottom = lastRect.top - containerRect.top + dotOffset - dotRadius
       const lineHeight = Math.max(0, bottom - top)
-      root.style.setProperty('--line-top', `${top}px`)
-      root.style.setProperty('--line-height', `${lineHeight}px`)
+      root.style.setProperty('--timeline-line-top', `${top}px`)
+      root.style.setProperty('--timeline-line-height', `${lineHeight}px`)
 
       const doc = document.documentElement
       const scrollTop = scrollContainer ? scrollContainer.scrollTop : window.scrollY
@@ -66,7 +65,7 @@ export default function Story() {
       const span = endScroll - startScroll
       const ratio =
         span > 0 ? Math.max(0, Math.min(1, (scrollTop - startScroll) / span)) : 0
-      root.style.setProperty('--line-progress', `${lineHeight * ratio}px`)
+      root.style.setProperty('--timeline-line-progress', `${lineHeight * ratio}px`)
 
       const activeIndex = items.reduce((closestIndex, item, index) => {
         const rect = item.getBoundingClientRect()
@@ -104,9 +103,9 @@ export default function Story() {
   }, [])
 
   return (
-    <article className="page">
+    <Page>
       <section className="story-intro">
-        <h2 className="page-title">WHAT HAPPENED</h2>
+        <PageTitle>WHAT HAPPENED</PageTitle>
 
         <div className="story-intro-grid">
           <img
@@ -148,9 +147,9 @@ export default function Story() {
       </section>
 
       <section className="story-events">
-        <p className="section-kicker section-kicker--large story-section-title">
+        <SectionTitle className="story-section-title">
           Event summary
-        </p>
+        </SectionTitle>
 
         <div className="timeline" ref={ref}>
         <section className="timeline-event">
@@ -191,9 +190,9 @@ export default function Story() {
             <ul className="timeline-bullets">
               <li>
                 He has a{' '}
-                <SourceLink href={storySources.civilDocket}>
+                <ExternalLink href={storySources.civilDocket}>
                   civil hearing at Montgomery County Courthouse
-                </SourceLink>{' '}
+                </ExternalLink>{' '}
                 over an alleged $3,300 debt brought by Midland Credit Management, a debt-buyer
                 collection case.
               </li>
@@ -228,9 +227,9 @@ export default function Story() {
             <ul className="timeline-bullets">
               <li>
                 Sheriff's deputies and Clarksville PD arrive.{' '}
-                <SourceLink href={storySources.courthouseInitial}>
+                <ExternalLink href={storySources.courthouseInitial}>
                   Both men are transported to hospitals in stable condition
-                </SourceLink>
+                </ExternalLink>
                 . Dalton continues livestreaming from the gurney.
               </li>
             </ul>
@@ -243,36 +242,36 @@ export default function Story() {
             <li>Dalton appears in court from the hospital.</li>
             <li>
               The state stacks the charges:{' '}
-              <SourceLink href={storySources.courtAppearance}>
+              <ExternalLink href={storySources.courtAppearance}>
                 attempted criminal homicide, employing a firearm during a dangerous felony,
                 aggravated assault, and reckless endangerment
-              </SourceLink>
+              </ExternalLink>
               .
             </li>
             <li>
-              <SourceLink href={storySources.judgeProfile}>Judge Reid Poland III</SourceLink>{' '}
+              <ExternalLink href={storySources.judgeProfile}>Judge Reid Poland III</ExternalLink>{' '}
               sets bond at{' '}
-              <SourceLink href={storySources.courtAppearance}>
+              <ExternalLink href={storySources.courtAppearance}>
                 <strong>$1.25 million</strong>
-              </SourceLink>
+              </ExternalLink>
               , a bond that's effectively impossible for an ordinary person to post.
             </li>
             <li>Attempted criminal homicide carries 15 to 60 years in Tennessee.</li>
             <li>Dalton closes his eyes when the bond is read out.</li>
             <li>
-              <SourceLink href={storySources.courtAppearance}>
+              <ExternalLink href={storySources.courtAppearance}>
                 Preliminary hearing set for <strong>May 26</strong>
-              </SourceLink>
+              </ExternalLink>
               .{' '}
-              <SourceLink href={storySources.attorneyProfile}>
+              <ExternalLink href={storySources.attorneyProfile}>
                 Jake Fendley appointed as his attorney
-              </SourceLink>
+              </ExternalLink>
               .
             </li>
           </ul>
         </section>
         </div>
       </section>
-    </article>
+    </Page>
   )
 }

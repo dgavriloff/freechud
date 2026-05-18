@@ -1,10 +1,11 @@
+import { Page, PageTitle } from '../components/Page'
 import { clips, type Clip } from '../data/clips'
 
 export default function Clips() {
   return (
-    <article className="page">
+    <Page>
       <section className="story-intro">
-        <h2 className="page-title">Isn't he a racist?</h2>
+        <PageTitle>Isn't he a racist?</PageTitle>
         <p>
           No. People have called Dalton every name in the book, most of it on his own
           livestream, while he stayed calm. He has been screamed at, threatened, and
@@ -24,7 +25,7 @@ export default function Clips() {
           ))}
         </div>
       )}
-    </article>
+    </Page>
   )
 }
 
