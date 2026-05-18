@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom'
+import ExternalLink from '../components/ExternalLink'
+import { Page, PageTitle } from '../components/Page'
+import SectionHeading, { SectionKicker } from '../components/SectionHeading'
 import { GIVESENDGO_URL } from '../constants'
 import { homeVideos } from '../data/homeVideos'
 
 export default function Home() {
   return (
-    <article className="home-page">
+    <Page className="home-page">
       <section className="hero-section">
-        <h1 className="page-title">MEET DALTON EATHERLY</h1>
+        <PageTitle as="h1">MEET DALTON EATHERLY</PageTitle>
 
         <div className="hero">
           <figure className="hero-video-frame">
@@ -63,12 +66,13 @@ export default function Home() {
       </section>
 
       <section className="home-section home-videos">
-        <div className="home-section-intro">
-          <p className="section-kicker">Dalton as ChudTheBuilder</p>
-          <h2 className="home-section-title">
-            Dalton livestreaming as ChudTheBuilder.
-          </h2>
-        </div>
+        <SectionHeading
+          className="home-section-intro"
+          eyebrow="Dalton as ChudTheBuilder"
+          titleClassName="home-section-title"
+        >
+          Dalton livestreaming as ChudTheBuilder.
+        </SectionHeading>
 
         <div className="home-video-grid">
           {homeVideos.map((video) => (
@@ -94,7 +98,7 @@ export default function Home() {
       </section>
 
       <section className="home-section">
-        <p className="section-kicker">Explore the case</p>
+        <SectionKicker>Explore the case</SectionKicker>
         <div className="home-link-grid">
           <Link className="home-link-card" to="/story">
             <span>What Happened</span>
@@ -119,29 +123,29 @@ export default function Home() {
             alt="Dalton playing with his dog in a field"
           />
           <div>
-            <p className="section-kicker">What you can do</p>
-            <h2 className="home-section-title">Help bring Dalton home.</h2>
+            <SectionHeading
+              eyebrow="What you can do"
+              titleClassName="home-section-title"
+            >
+              Help bring Dalton home.
+            </SectionHeading>
           </div>
         </div>
         <div className="home-cta-actions">
-          <a
+          <ExternalLink
             className="btn btn-primary support-donate-button"
             href={GIVESENDGO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Donate on GiveSendGo
-          </a>
-          <a
+          </ExternalLink>
+          <ExternalLink
             className="btn btn-secondary"
             href="https://twitter.com/intent/tweet?text=Dalton%20Eatherly%20is%20being%20held%20on%20a%20%241.25M%20bond%20after%20a%20disputed%20self-defense%20incident.%20Learn%20more%3A%20https%3A%2F%2Ffreechud.com"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Share the site
-          </a>
+          </ExternalLink>
         </div>
       </section>
-    </article>
+    </Page>
   )
 }

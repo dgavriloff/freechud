@@ -1,0 +1,96 @@
+/* Shared page primitives */
+
+.page {
+  max-width: 100%;
+}
+
+.page-title {
+  margin: 0 0 1.5rem;
+  font-size: 2.25rem;
+  letter-spacing: 0.01em;
+}
+
+.page-content > :first-child {
+  margin-top: 0;
+}
+
+.section-kicker {
+  margin: 0 0 0.5rem;
+  color: var(--wp-muted);
+  font-family: var(--wp-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin: 0 0 1rem;
+  color: var(--wp-muted);
+  font-family: var(--wp-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.page-content p,
+.story-intro p,
+.timeline-bullets li,
+.timeline-lede,
+.fact-block li,
+.pull-quote p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.citation-mark {
+  font-family: var(--wp-sans);
+  font-size: 0.75em;
+  line-height: 0;
+}
+
+.citation-mark a {
+  border-bottom: none;
+  color: var(--wp-link);
+  text-decoration: none;
+}
+
+.source-notes {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--wp-border);
+  color: var(--wp-muted);
+}
+
+.source-notes h3 {
+  margin: 0 0 0.75rem;
+  color: var(--wp-accent);
+  font-size: 1.25rem;
+}
+
+.source-notes ol {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.source-notes li {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.source-notes strong {
+  color: var(--wp-accent);
+}
+
+.source-marker {
+  display: inline-block;
+  width: 1.25rem;
+  color: var(--wp-link);
+  font-family: var(--wp-sans);
+  font-weight: 600;
+}

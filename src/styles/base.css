@@ -67,7 +67,7 @@ blockquote {
 code, pre {
   font-family: Menlo, Consolas, 'Courier New', monospace;
   font-size: 0.9375rem;
-  background: #f5f5f5;
+  background: var(--wp-code-bg);
 }
 
 code {

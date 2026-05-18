@@ -30,8 +30,8 @@ This is a small Vite + React + TypeScript site. Keep the structure boring.
 
 | Path | Purpose |
 | --- | --- |
-| `src/pages/` | Route-level pages such as `Home`, `Story`, `Clips`, `Support`, and `JoshuaFox`. |
-| `src/components/` | Shared layout or reusable UI used by more than one page. |
+| `src/pages/` | Route-level pages such as `Home`, `Story`, `Clips`, `Support`, and `WhyThisMatters`. |
+| `src/components/` | Shared layout, page wrappers, links, headings, or reusable UI used by more than one page. |
 | `src/data/` | Structured content lists, such as clips, timelines, bail comparisons, citations, or FAQs. |
 | `src/constants.ts` | External URLs and small site-wide constants. |
 | `src/styles/` | Shared styling, tokens, layout rules, page styles, and responsive styles. |
@@ -42,6 +42,13 @@ This is a small Vite + React + TypeScript site. Keep the structure boring.
 - **New page:** add a file in `src/pages/`, register the route in `src/App.tsx`,
   and add nav in `src/components/Layout.tsx` only if it belongs in the main nav.
 - **New reusable UI:** add it to `src/components/`.
+- **Repeated page chrome:** use `Page`, `PageTitle`, and `PageContent` from
+  `src/components/Page.tsx`.
+- **External links:** use `ExternalLink` from `src/components/ExternalLink.tsx`
+  instead of repeating `target="_blank"` and `rel="noopener noreferrer"`.
+- **Section labels/headings:** use `SectionTitle` for section subtitles,
+  `SectionKicker` for small eyebrow labels, and `SectionHeading` when a section
+  needs both together.
 - **New repeated content:** prefer a typed data file in `src/data/` instead of
   hard-coding a growing list directly inside a page.
 - **New external link:** put it in `src/constants.ts` if it may be reused or
@@ -128,11 +135,16 @@ src/styles/
 ├── index.css      # imports the other stylesheet files
 ├── tokens.css     # :root variables only
 ├── base.css       # reset, body, headings, links, media defaults
-├── layout.css     # navbar, main shell, footer
+├── shell.css      # navbar, main shell, footer
+├── pages.css      # shared page title, content, notes, and section primitives
+├── buttons.css    # shared button styles and interaction states
 ├── home.css       # homepage sections
-├── timeline.css   # story timeline
+├── story.css      # story intro and story-specific layout
+├── timeline.css   # timeline-specific styles
+├── support.css    # support page and donation sections
+├── why-this-matters.css # bail chart and Why This Matters page styles
 ├── clips.css      # clips page
-└── joshua-fox.css # Joshua Fox page
+└── evidence.css   # only if the evidence page grows custom styles
 ```
 
 Only create files that have a real purpose. A split should make styles easier to

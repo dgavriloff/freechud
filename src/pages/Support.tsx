@@ -1,17 +1,21 @@
 import {
+  ARCHETYPE_THEORY_X_URL,
   CONTACT_EMAIL,
   CONTACT_X_URL,
   GIVESENDGO_URL,
   PUMPFUN_URL,
   TSHIRT_URL,
+  WCAP_URL,
 } from '../constants'
+import ExternalLink from '../components/ExternalLink'
+import { Page, PageContent, PageTitle } from '../components/Page'
 import { formatCurrency, fundingMilestones, fundingStats } from '../data/funding'
 
 export default function Support() {
   return (
-    <article className="page">
-      <h2 className="page-title">HOW TO HELP</h2>
-      <div className="page-content">
+    <Page>
+      <PageTitle>HOW TO HELP</PageTitle>
+      <PageContent>
         <section className="support-donate-card">
           <img
             className="support-donate-image"
@@ -36,29 +40,25 @@ export default function Support() {
             <strong className="support-raised-amount">
               {formatCurrency(fundingStats.raised)}
             </strong>
-            <a
+            <ExternalLink
               className="btn btn-primary support-donate-button"
               href={GIVESENDGO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
             >
               Donate on GiveSendGo
-            </a>
-            <a
+            </ExternalLink>
+            <ExternalLink
               className="support-givesendgo-logo-link"
               href={GIVESENDGO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               aria-label="Open GiveSendGo campaign"
             >
-            <img
-              className="support-givesendgo-logo"
-              src="/images/givesendgo-logo.png"
-              alt="GiveSendGo"
-            />
-          </a>
-        </div>
-      </section>
+              <img
+                className="support-givesendgo-logo"
+                src="/images/givesendgo-logo.png"
+                alt="GiveSendGo"
+              />
+            </ExternalLink>
+          </div>
+        </section>
 
         <section className="support-section">
           <h3>Funding milestones</h3>
@@ -67,12 +67,10 @@ export default function Support() {
               const progress = Math.min(100, (milestone.amount / milestone.target) * 100)
 
               return (
-                <a
+                <ExternalLink
                   className="support-milestone"
                   href={GIVESENDGO_URL}
                   key={milestone.label}
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   <div className="support-milestone-header">
                     <span>{milestone.label}</span>
@@ -82,7 +80,7 @@ export default function Support() {
                     <span style={{ width: `${progress}%` }} />
                   </div>
                   <p>{milestone.note}</p>
-                </a>
+                </ExternalLink>
               )
             })}
           </div>
@@ -91,14 +89,12 @@ export default function Support() {
         <section className="support-section">
           <h3>Other ways to support</h3>
           <div className="support-actions">
-            <a
+            <ExternalLink
               className="btn btn-secondary"
               href={PUMPFUN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
             >
               Buy $CHUD on pump.fun
-            </a>
+            </ExternalLink>
           </div>
         </section>
 
@@ -115,51 +111,61 @@ export default function Support() {
             </p>
           </div>
           <div className="support-merch-action">
-            <a
+            <ExternalLink
               className="btn btn-secondary"
               href={TSHIRT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
             >
               Buy a t-shirt
-            </a>
+            </ExternalLink>
           </div>
         </section>
 
         <section className="support-section">
           <h3>Contact</h3>
-          <p>
-            For updates, coordination, or questions about helping, reach out to
-            Tom on{' '}
-            <a href={CONTACT_X_URL} target="_blank" rel="noopener noreferrer">
-              X
-            </a>{' '}
-            who is in direct contact with Dalton or contact the{' '}
-            <a href={`mailto:${CONTACT_EMAIL}`}>
-              WCAP
-            </a>
-            .
-          </p>
+          <ul className="support-contact-list">
+            <li>
+              <strong>Updates and coordination:</strong>{' '}
+              <ExternalLink href={CONTACT_X_URL}>
+                Tom on X.com
+              </ExternalLink>
+              , who is in direct contact with Dalton.
+            </li>
+            <li>
+              <strong>
+                <ExternalLink href={WCAP_URL}>
+                  WCAP
+                </ExternalLink>{' '}
+                inquiries:
+              </strong>{' '}
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            </li>
+            <li>
+              <strong>Operation Free Dalton:</strong>{' '}
+              <ExternalLink
+                href={ARCHETYPE_THEORY_X_URL}
+              >
+                ArchetypeTheory on X.com
+              </ExternalLink>
+            </li>
+          </ul>
         </section>
 
         <section className="support-section">
           <h3>Contribute to the site</h3>
           <p>
             Want to improve this website? Contribute on{' '}
-            <a
+            <ExternalLink
               href="https://github.com/dgavriloff/freechud"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               GitHub
-            </a>
+            </ExternalLink>
             .
           </p>
           <p className="muted-note">
             We are just regular people working every day to help Dalton.
           </p>
         </section>
-      </div>
-    </article>
+      </PageContent>
+    </Page>
   )
 }
